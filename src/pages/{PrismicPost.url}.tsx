@@ -38,7 +38,7 @@ export const query = graphql`
           }
           ...PostDataBodyText
           ...PostDataBodyQuote
-          # ...PageDataBodyFullWidthImage
+          ...PostDataBodyImage
           # ...PageDataBodyImageGallery
           # ...PageDataBodyImageHighlight
         }

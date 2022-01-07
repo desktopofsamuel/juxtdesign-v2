@@ -6,10 +6,12 @@ import { graphql } from 'gatsby';
 
 export const Image = ({ slice }) => (
   <section className="full-width-image content-section">
-    <GatsbyImage
-      image={slice.primary.image.gatsbyImageData}
-      alt={slice.primary.image.alt}
-    />
+    {slice.primary && (
+      <GatsbyImage
+        image={slice.primary.image.gatsbyImageData}
+        alt={slice.primary.image.alt}
+      />
+    )}
   </section>
 );
 

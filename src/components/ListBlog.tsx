@@ -38,7 +38,7 @@ export default function ListBlog({ data, css }) {
               loading="lazy"
             /> */}
             <h3>{post.node.data.title.text}</h3>
-            <SliceZone slices={post.node.data.body} components={components} />
+            {/* <SliceZone slices={post.node.data.body} components={components} /> */}
           </div>
         </Link>
       ))}
