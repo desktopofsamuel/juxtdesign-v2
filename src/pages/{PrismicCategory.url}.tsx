@@ -5,15 +5,22 @@ import { components } from '../slices';
 import Layout from '@/components/Layout';
 import ListPost from '@/components/ListPost';
 import ListBlog from '@/components/ListBlog';
+import SEO from '@/components/SEO';
 
-export default function CategoryTemplate({ data }) {
+export default function CategoryTemplate({ data, pageContext }) {
   if (!data) return null;
   const item = data.prismicCategory.data;
   const blogs = data.allPrismicBlog.edges;
   const posts = data.allPrismicPost.edges.slice(0, 10);
 
   return (
-    <Layout title={item.name}>
+    <Layout>
+      <SEO
+        postPath={pageContext.url}
+        pageTitle={item.name}
+        pageDescription={item.description}
+        pageKeywords={item.keywords}
+      />
       <h1>{item.name}</h1>
       <p>{item.description}</p>
       {/* {item.feature && <p>{item.feature.src}</p>} */}

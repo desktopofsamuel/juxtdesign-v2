@@ -10,7 +10,7 @@ const Wrapper = styled('section', {
   width: '100%',
   margin: '0 auto',
   opacity: '0',
-  background: '$background',
+  background: '$backgroundHover',
   boxShadow: '0px 2px 4px rgba(0,0,0,0.1)',
   transition: 'all 100ms ease-in',
   zIndex: '1',

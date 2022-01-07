@@ -8,6 +8,7 @@ import Layout from '@/components/Layout';
 import ListPost from '@/components/ListPost';
 import ListBlog from '@/components/ListBlog';
 import ListCategory from '@/components/ListCategory';
+import SEO from '@/components/SEO';
 
 const Text = styled('p', {});
 
@@ -28,7 +29,8 @@ export default function Index({ data }) {
   const categories = data.allPrismicCategory.edges;
 
   return (
-    <Layout title="Hello World">
+    <Layout>
+      <SEO postPath="/" />
       <Title>Hello Gatsby!</Title>
       <Text>A Chakra UI starter for GatsbyJS.</Text>
       <Link to="https://twitter.com/desktopofsamuel">
@@ -61,6 +63,7 @@ export const query = graphql`
               }
               ...BlogDataBodyText
               ...BlogDataBodyQuote
+              ...BlogDataBodyImage
             }
           }
         }

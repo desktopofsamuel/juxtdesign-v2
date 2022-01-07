@@ -2,12 +2,14 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Layout from '@/components/Layout';
 import ListPost from '@/components/ListPost';
+import SEO from '@/components/SEO';
 
 export default function ResourceIndex({ data }) {
   const posts = data.allPrismicPost.edges.slice(0, 8);
   return (
     <Layout variant="medium">
-      <h1>Resource</h1>
+      <SEO postPath="/resources" pageTitle="Resources" />
+      <h1>Resources</h1>
       <ListPost data={posts} />
     </Layout>
   );

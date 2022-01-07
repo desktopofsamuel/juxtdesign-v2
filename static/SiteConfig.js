@@ -3,7 +3,7 @@ const config = {
   siteTitleShort: 'JUXT Design', // Short site title for homescreen (PWA). Preferably should be under 12 characters to prevent truncation.
   siteTitleAlt: 'JUXT Design', // Alternative site title for SEO.
   siteLogo: '/favicon.png', // Logo used for SEO and manifest.
-  siteUrl: 'https://juxtdesign.co', // Domain of your website without pathPrefix.
+  siteUrl: 'https://juxtdesign.cc', // Domain of your website without pathPrefix.
   pathPrefix: '', // Prefixes all links. For cases when deployed to example.github.io/gatsby-advanced-starter/.
   siteDescription:
     'One stop guide and resources for product design, UI/UX design.', // Website description used for RSS feeds/meta description tag.
@@ -18,7 +18,7 @@ const config = {
   postsPerPage: 6, // Amount of posts displayed per listing page.
   userName: 'JUXT Design', // Username to display in the author segment.
   userEmail: 'juxtdesignco@gmail.com', // Email used for RSS feed's author segment
-  userTwitter: '@juxtdesignco', // Optionally renders "Follow Me" in the UserInfo segment.
+  userTwitter: '@juxtdesigncc', // Optionally renders "Follow Me" in the UserInfo segment.
   userLocation: 'Internet', // User location to display in the author segment.
   userAvatar: 'https://api.adorable.io/avatars/150/test.png', // User avatar to display in the author segment.
   userDescription:
@@ -27,14 +27,14 @@ const config = {
   userLinks: [
     {
       label: 'Instagram',
-      url: 'https://instagram.com/juxtdesignco',
+      url: 'https://instagram.com/juxtdesigncc',
     },
     {
       label: 'Twitter',
-      url: 'https://twitter.com/juxtdesignco',
+      url: 'https://twitter.com/juxtdesigncc',
     },
   ],
-  copyright: 'Copyright © 2021. JUXT Design', // Copyright string for the footer of the website and RSS feed.
+  copyright: 'Copyright © 2022. JUXT Design', // Copyright string for the footer of the website and RSS feed.
   themeColor: '#134042', // Used for setting manifest and progress theme colors.
   backgroundColor: '#e0e0e0', // Used for setting manifest background color.
   menu: [
