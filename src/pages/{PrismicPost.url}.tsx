@@ -3,12 +3,14 @@ import { graphql } from 'gatsby';
 import { SliceZone } from '@prismicio/react';
 import { components } from '../slices';
 import Layout from '@/components/Layout';
+import SEO from '@/components/SEO';
 
-export default function PostTemplate({ data }) {
+export default function PostTemplate({ data, pageContext }) {
   if (!data) return null;
   const doc = data.prismicPost.data;
   return (
     <Layout>
+      <SEO postPath={pageContext.url} postSEO postNode={doc} />
       <h1>{doc.title.text}</h1>
       <SliceZone slices={doc.body} components={components} />
     </Layout>
@@ -22,6 +24,14 @@ export const query = graphql`
         title {
           text
         }
+        url {
+          url
+        }
+        feature {
+          url
+          gatsbyImageData
+        }
+        date
         body {
           ... on PrismicSliceType {
             slice_type
