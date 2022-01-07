@@ -1,0 +1,95 @@
+{
+  "name": "sam-starter",
+  "description": "A Chakra UI Typescript Starter",
+  "version": "1.0.0",
+  "private": true,
+  "author": "Samuel Wong <desktopofsamuel@gmail.com> (https://desktopofsamuel.com)",
+  "license": "MIT",
+  "keywords": [
+    "gatsby",
+    "starter",
+    "typescript",
+    "chakra-ui"
+  ],
+  "scripts": {
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "type-check": "tsc",
+    "lint": "eslint --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\"",
+    "format": "prettier --ignore-path .gitignore \"src/**/*.+(ts|js|tsx)\" --write",
+    "test": "jest",
+    "commit": "cz"
+  },
+  "lint-staged": {
+    "./src/**/*.{ts,js,jsx,tsx}": [
+      "yarn lint --fix",
+      "yarn format"
+    ]
+  },
+  "dependencies": {
+    "@chakra-ui/gatsby-plugin": "2.0.2",
+    "@chakra-ui/react": "1.7.1",
+    "@emotion/react": "11.6.0",
+    "@emotion/styled": "11.6.0",
+    "@prismicio/react": "2.0.2",
+    "@stitches/react": "1.2.6",
+    "dotenv": "10.0.0",
+    "framer-motion": "5.3.0",
+    "gatsby": "4.1.4",
+    "gatsby-plugin-image": "2.4.0",
+    "gatsby-plugin-sharp": "4.4.0",
+    "gatsby-source-prismic": "5.2.3",
+    "gatsby-theme-stitches": "1.0.0",
+    "lodash.kebabcase": "4.1.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-helmet": "6.1.0",
+    "react-toggle-dark-mode": "1.0.4",
+    "slugify": "1.6.5",
+    "tsconfig-paths-webpack-plugin": "3.5.1",
+    "use-dark-mode": "2.3.1"
+  },
+  "devDependencies": {
+    "@babel/preset-react": "7.16.0",
+    "@babel/preset-typescript": "7.16.0",
+    "@commitlint/cli": "14.1.0",
+    "@commitlint/config-conventional": "14.1.0",
+    "@testing-library/dom": "8.11.1",
+    "@testing-library/jest-dom": "5.15.0",
+    "@testing-library/react": "12.1.2",
+    "@testing-library/react-hooks": "7.0.2",
+    "@types/jest": "27.0.2",
+    "@types/node": "16.11.7",
+    "@types/react": "17.0.34",
+    "@types/react-dom": "17.0.11",
+    "@typescript-eslint/eslint-plugin": "5.3.1",
+    "@typescript-eslint/parser": "5.3.1",
+    "babel-jest": "27.3.1",
+    "babel-preset-gatsby": "2.1.2",
+    "commitizen": "4.2.4",
+    "cz-conventional-changelog": "3.3.0",
+    "eslint": "8.2.0",
+    "eslint-config-airbnb": "18.2.1",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-import-resolver-typescript": "2.5.0",
+    "eslint-plugin-import": "2.25.3",
+    "eslint-plugin-jest": "25.2.4",
+    "eslint-plugin-jsx-a11y": "6.5.1",
+    "eslint-plugin-prettier": "4.0.0",
+    "eslint-plugin-react": "7.27.0",
+    "eslint-plugin-react-hooks": "4.3.0",
+    "identity-obj-proxy": "3.0.0",
+    "jest": "27.3.1",
+    "lint-staged": "11.2.6",
+    "prettier": "2.4.1",
+    "ts-jest": "27.0.7",
+    "typescript": "4.4.4"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  }
+}

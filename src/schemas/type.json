@@ -1,0 +1,37 @@
+{
+  "Main": {
+    "name": {
+      "type": "Text",
+      "config": {
+        "label": "name"
+      }
+    },
+    "bgcolor": {
+      "type": "Color",
+      "config": {
+        "label": "bgcolor"
+      }
+    },
+    "textcolor": {
+      "type": "Color",
+      "config": {
+        "label": "textcolor"
+      }
+    },
+    "svg": {
+      "type": "Text",
+      "config": {
+        "label": "svg",
+        "placeholder": "Inline SVG"
+      }
+    },
+    "icon": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "icon"
+      }
+    }
+  }
+}
