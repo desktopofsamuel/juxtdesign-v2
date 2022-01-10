@@ -23,7 +23,7 @@ export default function ListBlog({ data, css }) {
   return (
     <PostListWrapper css={css}>
       {data.map((post, i) => (
-        <Link to={`/blog/${kebabCase(post.node.uid)}/`}>
+        <Link to={`/blog${post.node.fields.slug}`}>
           <div
             key={i}
             padding="4"
@@ -37,7 +37,8 @@ export default function ListBlog({ data, css }) {
               alt={`Screenshot of ${post.node.data.title.text}`}
               loading="lazy"
             /> */}
-            <h3>{post.node.data.title.text}</h3>
+            <h3>{post.node.frontmatter.title}</h3>
+            <p>{post.node.excerpt}</p>
             {/* <SliceZone slices={post.node.data.body} components={components} /> */}
           </div>
         </Link>
