@@ -12,6 +12,7 @@ export default function BlogPostTemplate({ children, data }) {
       {post.frontmatter.featureImage && (
         <GatsbyImage
           image={post.frontmatter.featureImage.childImageSharp.gatsbyImageData}
+          alt={''}
         />
       )}
       <MDXRenderer>{post.body}</MDXRenderer>
@@ -21,8 +22,15 @@ export default function BlogPostTemplate({ children, data }) {
 
 export const query = graphql`
   query BlogPostQuery($slug: String) {
-    mdx(slug: { eq: $slug }) {
-      ...post
+    mdx(fields: { slug: { eq: $slug } }) {
+      frontmatter {
+        title
+        tags
+        draft
+        description
+        date
+      }
+      body
     }
   }
 `;
