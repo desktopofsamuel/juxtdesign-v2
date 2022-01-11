@@ -13,7 +13,11 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       Object.prototype.hasOwnProperty.call(node, 'frontmatter') &&
       Object.prototype.hasOwnProperty.call(node.frontmatter, 'title')
     ) {
-      slug = `/${kebabCase(node.frontmatter.title)}`;
+      slug = `${kebabCase(node.frontmatter.title)}`;
+    } else if (parsedFilePath.dir === '') {
+      slug = `/${parsedFilePath.name}/`;
+    } else {
+      slug = `/${parsedFilePath.dir}/`;
     }
   }
   createNodeField({ node, name: 'slug', value: slug });
@@ -45,6 +49,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     description: String
     date: Date @dateformat
     draft: Boolean
+    feature: Boolean
     featurePhoto: File
     externalImage: String!
     tags: [String]
@@ -52,3 +57,8 @@ exports.createSchemaCustomization = ({ actions }) => {
   }
   `);
 };
+
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions;
+  const postPage = path.resolve('src/templates/blog.tsx');
+  
