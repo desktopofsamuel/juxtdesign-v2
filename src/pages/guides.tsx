@@ -5,7 +5,7 @@ import ListBlog from '@/components/ListBlog';
 import SEO from '@/components/SEO';
 
 export default function GuidePage({ data }) {
-  const blogs = data.allMdx.edges;
+  const blogs = data.allPrismicBlog.edges;
   return (
     <Layout>
       <SEO postPath="/guides/" pageTitle="Guides" />
@@ -17,13 +17,23 @@ export default function GuidePage({ data }) {
 
 export const query = graphql`
   query GuidePageQuery {
-    allMdx(
-      sort: { order: DESC, fields: frontmatter___date }
-      filter: { fileAbsolutePath: { regex: "/content/" } }
-    ) {
+    allPrismicBlog {
       edges {
         node {
-          ...post
+          uid
+          data {
+            title {
+              text
+            }
+            date
+            body {
+              ... on PrismicSliceType {
+                slice_type
+              }
+              ...BlogDataBodyText
+              ...BlogDataBodyQuote
+            }
+          }
         }
       }
     }

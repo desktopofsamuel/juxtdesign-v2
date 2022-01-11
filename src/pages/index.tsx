@@ -25,8 +25,9 @@ const Row = styled('div', {
 
 export default function Index({ data }) {
   const posts = data.allPrismicPost.edges.slice(0, 8);
-  const blogs = data.allMdx.edges.slice(0, 3);
+  const blogs = data.allPrismicBlog.edges.slice(0, 3);
   const categories = data.allPrismicCategory.edges;
+
   return (
     <Layout>
       <SEO postPath="/" />
@@ -38,6 +39,7 @@ export default function Index({ data }) {
       <Row>
         <ListBlog data={blogs} css={{ gridColumn: 'span 12' }} />
         <ListCategory data={categories} css={{ gridColumn: 'span 3' }} />
+
         <ListPost data={posts} css={{ gridColumn: 'span 9' }} />
       </Row>
     </Layout>
@@ -46,27 +48,27 @@ export default function Index({ data }) {
 
 export const query = graphql`
   query IndexQuery {
-    # allPrismicBlog {
-    #   edges {
-    #     node {
-    #       uid
-    #       data {
-    #         title {
-    #           text
-    #         }
-    #         date
-    #         body {
-    #           ... on PrismicSliceType {
-    #             slice_type
-    #           }
-    #           ...BlogDataBodyText
-    #           ...BlogDataBodyQuote
-    #           ...BlogDataBodyImage
-    #         }
-    #       }
-    #     }
-    #   }
-    # }
+    allPrismicBlog {
+      edges {
+        node {
+          uid
+          data {
+            title {
+              text
+            }
+            date
+            body {
+              ... on PrismicSliceType {
+                slice_type
+              }
+              ...BlogDataBodyText
+              ...BlogDataBodyQuote
+              ...BlogDataBodyImage
+            }
+          }
+        }
+      }
+    }
     allPrismicPost(sort: { fields: data___date, order: DESC }) {
       edges {
         node {
@@ -96,13 +98,6 @@ export const query = graphql`
             name
           }
           uid
-        }
-      }
-    }
-    allMdx(sort: { fields: frontmatter___date, order: DESC }) {
-      edges {
-        node {
-          ...post
         }
       }
     }

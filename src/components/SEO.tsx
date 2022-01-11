@@ -34,7 +34,7 @@ export default function SEO({
     title = `${postMeta.title.text} | ${config.siteTitleShort}`;
     // description = postNode.excerpt;
     image = postMeta.feature ? postMeta.feature.url : config.siteLogo;
-    // console.log(image);
+    console.log(image);
     postURL = urljoin(config.siteUrl, config.pathPrefix, postPath);
     keywords = postMeta.tags ? postMeta.tags : config.siteKeywords;
   } else {
