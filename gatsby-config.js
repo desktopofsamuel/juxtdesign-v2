@@ -29,5 +29,25 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-theme-stitches',
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `JUXT Design`,
+        short_name: `JUXT Design`,
+        start_url: `/`,
+        background_color: `#f7f0eb`,
+        theme_color: `#025050`,
+        display: `standalone`,
+        icon: `static/favicon.svg`,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-google-tagmanager',
+      options: {
+        id: 'GTM-KMZKK6Q',
+        // defer: true,
+        enableWebVitalsTracking: true,
+      },
+    },
   ],
 };
