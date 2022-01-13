@@ -20,29 +20,7 @@ export default function PostTemplate({ data, pageContext }) {
 export const query = graphql`
   query PostQuery($url: String) {
     prismicPost(url: { eq: $url }) {
-      data {
-        title {
-          text
-        }
-        url {
-          url
-        }
-        feature {
-          url
-          gatsbyImageData
-        }
-        date
-        body {
-          ... on PrismicSliceType {
-            slice_type
-          }
-          ...PostDataBodyText
-          ...PostDataBodyQuote
-          ...PostDataBodyImage
-          # ...PageDataBodyImageGallery
-          # ...PageDataBodyImageHighlight
-        }
-      }
+      ...post
     }
   }
 `;

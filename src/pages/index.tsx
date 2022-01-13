@@ -1,6 +1,5 @@
 import React from 'react';
 import { PageProps, graphql } from 'gatsby';
-// import { Button, Text } from '@chakra-ui/react';
 import { styled } from 'gatsby-theme-stitches/src/stitches.config';
 import Link from '@/components/GatsbyLink';
 import Title from '@/components/Title';
@@ -31,16 +30,19 @@ export default function Index({ data }) {
   return (
     <Layout>
       <SEO postPath="/" />
-      <Title>Hello Gatsby!</Title>
-      <Text>A Chakra UI starter for GatsbyJS.</Text>
-      <Link to="https://twitter.com/desktopofsamuel">
-        <button>Follow me on Twitter</button>
-      </Link>
       <Row>
-        <ListBlog data={blogs} css={{ gridColumn: 'span 12' }} />
+        <Row
+          css={{
+            gridColumn: 'span 12',
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr 1fr',
+          }}
+        >
+          <ListBlog data={blogs} withImage withDate />
+        </Row>
         <ListCategory data={categories} css={{ gridColumn: 'span 3' }} />
 
-        <ListPost data={posts} css={{ gridColumn: 'span 9' }} />
+        <ListPost data={posts} css={{ gridColumn: 'span 9' }} withCategory />
       </Row>
     </Layout>
   );
@@ -48,56 +50,24 @@ export default function Index({ data }) {
 
 export const query = graphql`
   query IndexQuery {
-    allPrismicBlog {
+    allPrismicBlog(sort: { fields: data___date, order: DESC }) {
       edges {
         node {
-          uid
-          data {
-            title {
-              text
-            }
-            date
-            body {
-              ... on PrismicSliceType {
-                slice_type
-              }
-              ...BlogDataBodyText
-              ...BlogDataBodyQuote
-              ...BlogDataBodyImage
-            }
-          }
+          ...blog
         }
       }
     }
     allPrismicPost(sort: { fields: data___date, order: DESC }) {
       edges {
         node {
-          data {
-            title {
-              text
-            }
-            feature {
-              gatsbyImageData
-            }
-            body {
-              ... on PrismicSliceType {
-                slice_type
-              }
-              ...PostDataBodyText
-              ...PostDataBodyQuote
-            }
-          }
-          uid
+          ...post
         }
       }
     }
     allPrismicCategory(sort: { fields: uid, order: ASC }) {
       edges {
         node {
-          data {
-            name
-          }
-          uid
+          ...category
         }
       }
     }

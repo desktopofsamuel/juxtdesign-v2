@@ -6,6 +6,7 @@ import Container from '@/components/Container';
 import Header from '@/components/Header';
 import { ThemeProvider } from '@/components/ThemeContext';
 import SEO from '@/components/SEO';
+import Footer from '@/components/Footer';
 
 const Main = styled(`main`, {
   margin: 10,
@@ -92,6 +93,7 @@ const Layout: React.FC = ({ title, children, theme, variant, ...props }) => {
       <ThemeProvider>
         <Header />
         <Container size={variant}>{children}</Container>
+        <Footer />
       </ThemeProvider>
     </>
   );

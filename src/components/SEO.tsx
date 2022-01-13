@@ -150,7 +150,11 @@ export default function SEO({
 
       {/* OpenGraph tags */}
       <meta property="og:url" content={postURL} />
-      {postSEO ? <meta property="og:type" content="article" /> : null}
+      {postSEO ? (
+        <meta property="og:type" content="article" />
+      ) : (
+        <meta property="og:type" content="website" />
+      )}
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />

@@ -1,11 +1,11 @@
 import React from 'react';
-// import { Heading, Text, Box, SimpleGrid } from '@chakra-ui/react';
 import { SliceZone } from '@prismicio/react';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { styled } from 'gatsby-theme-stitches/src/stitches.config';
 import kebabCase from 'lodash.kebabcase';
 import { components } from '../slices';
 import Link from './GatsbyLink';
+import { ResourceTitle, Body, Meta } from '../styles/TextStyles';
 
 const PostListWrapper = styled('div', {
   gridGap: '$3',
@@ -34,7 +34,7 @@ const ContentWrapper = styled('div', {
   textDecoration: 'none',
 });
 
-export default function ListPost({ data, css }) {
+export default function ListPost({ data, css, withCategory }) {
   return (
     <PostListWrapper css={css}>
       {data.map((post, i) => (
@@ -51,7 +51,12 @@ export default function ListPost({ data, css }) {
               />
             )}
             <ContentWrapper>
-              <h3>{post.node.data.title.text}</h3>
+              {withCategory && post.node.data.categories ? (
+                <Meta type="label">
+                  {post.node.data.categories[0].category.document.data.name}
+                </Meta>
+              ) : null}
+              <ResourceTitle>{post.node.data.title.text}</ResourceTitle>
               <SliceZone slices={post.node.data.body} components={components} />
             </ContentWrapper>
           </ListItem>

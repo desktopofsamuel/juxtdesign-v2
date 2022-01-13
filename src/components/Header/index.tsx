@@ -148,7 +148,7 @@ const Header: React.FC = () => (
               />
               <p>Typography</p>
             </SubMenuItem>
-            <SubMenuItem to="/tags/">
+            <SubMenuItem to="/categories/">
               <StaticImage
                 as="span"
                 alt=""
@@ -162,7 +162,7 @@ const Header: React.FC = () => (
         </NavItem>
 
         <NavItem to="/guides/" activeClassName="nav-item-active">
-          <p>Guides ›</p>
+          <p>Guides</p>
           {/* <Submenu>
         <SubMenuItem to="/posts/why-designers-need-a-personal-website/">
           <StaticImage
