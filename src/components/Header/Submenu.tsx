@@ -1,8 +1,7 @@
 import React from 'react';
 import { styled } from 'gatsby-theme-stitches/src/stitches.config';
-import Container from '@/components/Container';
 
-const Wrapper = styled('section', {
+const Wrapper = styled('div', {
   visibility: 'hidden',
   position: 'absolute',
   top: '81px', // Header Height is 80px
@@ -23,9 +22,16 @@ const Grid = styled('div', {
   justifyContent: 'space-between',
 });
 
+const Container = styled('div', {
+  padding: '$2',
+  margin: '0 auto',
+  maxWidth: '$space$medium',
+  paddingBottom: '$2',
+});
+
 const Submenu: React.FC = ({ children }) => (
   <Wrapper>
-    <Container size="medium" css={{ paddingBottom: '$2' }}>
+    <Container>
       <Grid>{children}</Grid>
     </Container>
   </Wrapper>

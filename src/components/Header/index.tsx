@@ -46,7 +46,7 @@ const NavItem = styled(Link, {
     backgroundColor: '$backgroundHover',
   },
 
-  '&:hover section': {
+  '&:hover div': {
     visibility: 'visible',
     opacity: '1',
     color: '$primary',

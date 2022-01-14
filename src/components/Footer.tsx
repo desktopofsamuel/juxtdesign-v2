@@ -45,7 +45,7 @@ export default function Footer() {
             <SectionTitle>Explore</SectionTitle>
             <FooterLink to="/about/">About</FooterLink>
             <FooterLink to="/guides/">Blog</FooterLink>
-            <FooterLink to="/resources/">Resource</FooterLink>
+            <FooterLink to="/resources/">Resources</FooterLink>
           </Wrapper>
           <Wrapper>
             <SectionTitle>Follow</SectionTitle>
