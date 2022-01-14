@@ -9,6 +9,7 @@ export const postFragment = graphql`
       }
       feature {
         alt
+        url
         gatsbyImageData
       }
       excerpt {

@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import urljoin from 'url-join';
 import dayjs from 'dayjs';
-import config from '../../static/SiteConfig';
+import config from '../../SiteConfig';
 
 type SEOProps = {
   postNode: object;
@@ -31,8 +31,9 @@ export default function SEO({
 
   if (postSEO) {
     const postMeta = postNode;
+    console.log(postMeta);
     title = `${postMeta.title.text} | ${config.siteTitleShort}`;
-    // description = postNode.excerpt;
+    description = postMeta.excerpt.text;
     image = postMeta.feature ? postMeta.feature.url : config.siteLogo;
     console.log(image);
     postURL = urljoin(config.siteUrl, config.pathPrefix, postPath);

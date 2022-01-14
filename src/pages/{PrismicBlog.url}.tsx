@@ -7,7 +7,7 @@ import { styled } from 'gatsby-theme-stitches/src/stitches.config';
 import { components } from '../slices';
 import Layout from '@/components/Layout';
 import SEO from '@/components/SEO';
-import config from '../../static/SiteConfig';
+import config from '../../SiteConfig';
 import { PageTitle, Meta } from '../styles/TextStyles';
 
 const Grid = styled('div', {
@@ -31,7 +31,7 @@ export default function BlogTemplate({ data, pageContext }) {
   const doc = data.prismicBlog.data;
   return (
     <Layout variant="medium">
-      <SEO postPath={pageContext.url} pageTitle={doc.title.text} />
+      <SEO postPath={pageContext.url} postSEO postNode={doc} />
       <PageTitle>{doc.title.text}</PageTitle>
       <Grid>
         <Wrapper>
