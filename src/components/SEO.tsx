@@ -33,7 +33,9 @@ export default function SEO({
     const postMeta = postNode;
     console.log(postMeta);
     title = `${postMeta.title.text} | ${config.siteTitleShort}`;
-    description = postMeta.excerpt.text;
+    description = postMeta.excerpt
+      ? postMeta.excerpt.text
+      : config.siteDescription;
     image = postMeta.feature ? postMeta.feature.url : config.siteLogo;
     console.log(image);
     postURL = urljoin(config.siteUrl, config.pathPrefix, postPath);
