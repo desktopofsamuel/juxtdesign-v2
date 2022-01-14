@@ -36,7 +36,9 @@ export default function SEO({
     description = postMeta.excerpt
       ? postMeta.excerpt.text
       : config.siteDescription;
-    image = postMeta.feature ? postMeta.feature.url : config.siteLogo;
+    image = postMeta.feature.localFile
+      ? postMeta.feature.localFile.publicURL
+      : config.siteLogo;
     console.log(image);
     postURL = urljoin(config.siteUrl, config.pathPrefix, postPath);
     keywords = postMeta.tags ? postMeta.tags : config.siteKeywords;
@@ -50,16 +52,16 @@ export default function SEO({
     postURL = urljoin(config.siteUrl, config.pathPrefix, postPath);
   }
 
-  // const getImagePath = (imageURI) => {
-  //   if (
-  //     !imageURI.match(
-  //       `(https?|ftp|file)://[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]`,
-  //     )
-  //   )
-  //     return urljoin(config.siteUrl, config.pathPrefix, imageURI);
+  const getImagePath = (imageURI) => {
+    if (
+      !imageURI.match(
+        `(https?|ftp|file)://[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]`,
+      )
+    )
+      return urljoin(config.siteUrl, config.pathPrefix, imageURI);
 
-  //   return imageURI;
-  // };
+    return imageURI;
+  };
 
   const getPublicationDate = () => {
     if (!postNode) return null;
@@ -71,7 +73,7 @@ export default function SEO({
     return dayjs(postNode.date, config.dateFromFormat).toDate();
   };
 
-  // image = getImagePath(image);
+  image = getImagePath(image);
 
   const datePublished = getPublicationDate();
 

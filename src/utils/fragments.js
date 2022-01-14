@@ -11,10 +11,14 @@ export const postFragment = graphql`
         alt
         url
         gatsbyImageData
+        localFile {
+          publicURL
+        }
       }
       excerpt {
         text
       }
+
       date(fromNow: true)
       body {
         ... on PrismicSliceType {

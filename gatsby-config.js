@@ -22,6 +22,13 @@ module.exports = {
   // don't need to define it here (just if you need to change the options)
   plugins: [
     {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'static',
+        path: `${__dirname}/static/`,
+      },
+    },
+    {
       resolve: 'gatsby-source-prismic',
       options: {
         repositoryName: process.env.GATSBY_PRISMIC_REPO_NAME,
@@ -38,6 +45,9 @@ module.exports = {
           type: require('./src/schemas/type.json'),
         },
         linkResolver: require('./src/utils/linkResolver').linkResolver,
+        shouldDownloadFiles: {
+          'blog.data.feature': true,
+        },
       },
     },
     'gatsby-plugin-image',
