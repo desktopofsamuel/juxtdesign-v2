@@ -13,6 +13,23 @@ const Main = styled(`main`, {
 });
 
 const globalStyles = globalCss({
+  '@font-face': [
+    {
+      fontFamily: 'HK Grotesk',
+      src: 'url("./fonts/hkgrotesk-bold-webfont.woff2")',
+      fontWeight: '700',
+      fontStyle: 'bold',
+      fontDisplay: 'swap',
+    },
+    {
+      fontFamily: 'HK Grotesk',
+      src: 'url("/fonts/hkgrotesk-medium-webfont.woff2")',
+      fontWeight: '500',
+      fontStyle: 'regular',
+      fontDisplay: 'swap',
+    },
+  ],
+
   html: {
     fontFamily: `$sans`,
     fontWeight: `$regular`,
