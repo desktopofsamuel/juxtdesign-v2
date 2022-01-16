@@ -21,6 +21,7 @@ module.exports = {
   // Since `gatsby-plugin-typescript` is automatically included in Gatsby you
   // don't need to define it here (just if you need to change the options)
   plugins: [
+    `gatsby-plugin-react-helmet`,
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -73,6 +74,85 @@ module.exports = {
         id: 'GTM-KMZKK6Q',
         // defer: true,
         enableWebVitalsTracking: true,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-feed',
+      options: {
+        setup(ref) {
+          const ret = ref.query.site.siteMetadata.rssMetadata;
+          ret.allMdx = ref.query.allMdx;
+          ret.generator = 'GatsbyJS Advanced Starter';
+          return ret;
+        },
+        query: `
+        {
+          site {
+            siteMetadata {
+              rssMetadata {
+                site_url
+                feed_url
+                title
+                description
+                image_url
+                copyright
+                author  
+              }
+            }
+          }
+        }
+      `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allPrismicBlog } }) =>
+              allPrismicBlog.edges.map((edge) => ({
+                ...edge.node.frontmatter,
+                description: edge.node.data.excerpt,
+                date: edge.node.fields.date,
+                url: `${site.siteMetadata.rssMetadata.site_url}/posts${edge.node.fields.slug}/`,
+                guid: `${site.siteMetadata.rssMetadata.site_url}/posts${edge.node.fields.slug}/`,
+                author: site.siteMetadata.rssMetadata.userName,
+                custom_elements: [
+                  {
+                    'content:encoded': `<img src={edge.node.feature.gatsbyImageData.publicURL}/>`
+                      edge.node.html,
+                      
+                  },
+                ],
+              })),
+            query: `
+            {
+              allMdx(
+                limit: 1000,
+                sort: { order: DESC, fields: [fields___date] },
+                filter: {frontmatter: { draft: { ne: true }, template: { eq: "digest" }}},
+              ) {
+                edges {
+                  node {
+                    excerpt
+                    html
+                    timeToRead
+                    fields {
+                      slug
+                      date
+                    }
+                    frontmatter {
+                      template
+                      title
+                      date
+                      category
+                      tags
+                      url
+                    }
+                  }
+                }
+              }
+            }
+            `,
+            output: '/rss.xml',
+            title: config.siteRssTitle,
+          },
+        ],
       },
     },
   ],

@@ -7,6 +7,7 @@ import Header from '@/components/Header';
 import { ThemeProvider } from '@/components/ThemeContext';
 import SEO from '@/components/SEO';
 import Footer from '@/components/Footer';
+import siteConfig from '../../SiteConfig';
 
 const Main = styled(`main`, {
   margin: 10,
@@ -16,7 +17,7 @@ const globalStyles = globalCss({
   '@font-face': [
     {
       fontFamily: 'HK Grotesk',
-      src: 'url("./fonts/hkgrotesk-bold-webfont.woff2")',
+      src: 'url("/fonts/hkgrotesk-bold-webfont.woff2")',
       fontWeight: '700',
       fontStyle: 'bold',
       fontDisplay: 'swap',
