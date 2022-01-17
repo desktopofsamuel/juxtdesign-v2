@@ -18,7 +18,11 @@ export const postFragment = graphql`
       excerpt {
         text
       }
-
+      categories {
+        category {
+          uid
+        }
+      }
       date(fromNow: true)
       body {
         ... on PrismicSliceType {

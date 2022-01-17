@@ -38,7 +38,7 @@ export default function GuidePage({ data }) {
 export const query = graphql`
   query GuidePageQuery {
     featured: allPrismicBlog(
-      filter: { data: { isfeatured: { eq: true } } }
+      # filter: { data: { isfeatured: { eq: true } } }
       sort: { fields: data___date, order: DESC }
       limit: 4
     ) {
@@ -49,8 +49,9 @@ export const query = graphql`
       }
     }
     all: allPrismicBlog(
-      filter: { data: { isfeatured: { ne: true } } }
+      # filter: { data: { isfeatured: { ne: true } } }
       sort: { fields: data___date, order: DESC }
+      skip: 4
     ) {
       edges {
         node {
