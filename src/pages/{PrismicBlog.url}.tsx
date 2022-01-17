@@ -26,6 +26,12 @@ const Wrapper = styled('div', {
   margin: '$4 0',
 });
 
+function toTitleCase(str) {
+  return str.replace(/\w\S*/g, function (txt) {
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+  });
+}
+
 export default function BlogTemplate({ data, pageContext }) {
   if (!data) return null;
   const doc = data.prismicBlog.data;
@@ -49,6 +55,21 @@ export default function BlogTemplate({ data, pageContext }) {
             >
               Twitter
             </GatsbyLink>
+          </Meta>
+        </Wrapper>
+        <Wrapper>
+          <Meta type="label">Tags</Meta>
+          <Meta
+            type="value"
+            css={{ display: 'flex', flexDirection: 'row', gap: '$1' }}
+          >
+            {console.log(doc.categories)}
+            {doc.categories.map((item) => (
+              <GatsbyLink to={`/tags/${item.category.uid}`}>
+                {toTitleCase(item.category.uid)}
+              </GatsbyLink>
+            ))}
+            {/* <p>{doc.categories.category.uid}</p> */}
           </Meta>
         </Wrapper>
       </Grid>
