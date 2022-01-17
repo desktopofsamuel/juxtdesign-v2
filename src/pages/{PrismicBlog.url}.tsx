@@ -57,21 +57,23 @@ export default function BlogTemplate({ data, pageContext }) {
             </GatsbyLink>
           </Meta>
         </Wrapper>
-        <Wrapper>
-          <Meta type="label">Tags</Meta>
-          <Meta
-            type="value"
-            css={{ display: 'flex', flexDirection: 'row', gap: '$1' }}
-          >
-            {console.log(doc.categories)}
-            {doc.categories.map((item) => (
-              <GatsbyLink to={`/tags/${item.category.uid}`}>
-                {toTitleCase(item.category.uid)}
-              </GatsbyLink>
-            ))}
-            {/* <p>{doc.categories.category.uid}</p> */}
-          </Meta>
-        </Wrapper>
+        {doc.categories.length !== 0 && (
+          <Wrapper>
+            <Meta type="label">Tags</Meta>
+            <Meta
+              type="value"
+              css={{ display: 'flex', flexDirection: 'row', gap: '$1' }}
+            >
+              {console.log(doc.categories)}
+              {doc.categories.map((item) => (
+                <GatsbyLink to={`/tags/${item.category.uid}`}>
+                  {toTitleCase(item.category.uid)}
+                </GatsbyLink>
+              ))}
+              {/* <p>{doc.categories.category.uid}</p> */}
+            </Meta>
+          </Wrapper>
+        )}
       </Grid>
       {doc.feature && (
         <GatsbyImage
