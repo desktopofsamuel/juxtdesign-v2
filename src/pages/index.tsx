@@ -36,6 +36,10 @@ export default function Index({ data }) {
             gridColumn: 'span 12',
             display: 'grid',
             gridTemplateColumns: '1fr 1fr 1fr',
+
+            '@md': {
+              display: 'block',
+            },
           }}
         >
           <ListBlog data={blogs} withImage withDate />

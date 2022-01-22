@@ -18,6 +18,10 @@ const LargeBody = styled(Body, {
   fontSize: '$5',
   textAlign: 'center',
   margin: '$2',
+
+  '@md': {
+    fontSize: '$3',
+  },
 });
 
 const AlwaysWhiteBody = styled(Body, {
@@ -31,6 +35,10 @@ const Section = styled('section', {
   padding: '$4 0',
   display: 'grid',
   gridTemplateColumns: 'repeat(12, 1fr)',
+
+  '@md': {
+    display: 'block',
+  },
 });
 
 const FullWidthSection = styled(Section, {
@@ -46,18 +54,30 @@ const BoldPageTitle = styled(PageTitle, {
   fontSize: '$8',
   textTransform: 'uppercase',
   lineHeight: '$tight',
+
+  '@md': {
+    fontSize: '$6',
+  },
 });
 
 const SectionPageTitle = styled(ResourceTitle, {
   fontFamily: '$syne',
   fontSize: '$6',
   lineHeight: '$tight',
+
+  '@md': {
+    fontSize: '$4',
+  },
 });
 const SectionPageTitleOnDark = styled(ResourceTitle, {
   fontFamily: '$syne',
   fontSize: '$6',
   lineHeight: '$tight',
   color: '$onPrimary',
+
+  '@md': {
+    fontSize: '$4',
+  },
 });
 const AboutContainer = styled(Container, {});
 

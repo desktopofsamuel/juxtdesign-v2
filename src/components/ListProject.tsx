@@ -14,6 +14,10 @@ const Grid = styled('div', {
   flexDirection: 'column',
   justifyContent: 'center',
   minHeight: '30vh',
+
+  '@md': {
+    minHeight: '10vh',
+  },
 });
 
 const Title = styled(ResourceTitle, {
