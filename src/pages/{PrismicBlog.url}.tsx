@@ -65,11 +65,12 @@ export default function BlogTemplate({ data, pageContext }) {
               css={{ display: 'flex', flexDirection: 'row', gap: '$1' }}
             >
               {console.log(doc.categories)}
-              {doc.categories.map((item) => (
-                <GatsbyLink to={`/tags/${item.category.uid}`}>
-                  {toTitleCase(item.category.uid)}
-                </GatsbyLink>
-              ))}
+              {doc.categories &&
+                doc.categories.map((item) => (
+                  <GatsbyLink to={`/tags/${item.category.uid}`}>
+                    {toTitleCase(item.category.uid)}
+                  </GatsbyLink>
+                ))}
               {/* <p>{doc.categories.category.uid}</p> */}
             </Meta>
           </Wrapper>
