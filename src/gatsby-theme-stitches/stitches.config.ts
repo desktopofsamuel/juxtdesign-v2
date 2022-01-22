@@ -72,13 +72,16 @@ export const {
       sans: 'HK Grotesk, apple-system, Helvetica, Arial, sans-serif',
       serif: 'Calibre, Georgia, serif',
       mono: 'Georgia, IBM Plex Mono, Courier, Menlo, Consolas, Monaco, Lucida Console, monospace',
+      syne: 'Syne, apple-system, Helvetica, Arial, sans-serif',
     },
     fontWeights: {
       regular: '500',
       bold: '700',
+      extrabold: '800'
     },
     lineHeights: {
       regular: '1.5',
+      tight: '1.2',
     },
     letterSpacings: {},
     sizes: {},

@@ -29,6 +29,13 @@ const globalStyles = globalCss({
       fontStyle: 'regular',
       fontDisplay: 'swap',
     },
+    {
+      fontFamily: 'Syne',
+      src: 'url("/fonts/syne-v3-latin-800.woff2")',
+      fontWeight: '800',
+      fontStyle: 'bold',
+      fontDisplay: 'swap',
+    },
   ],
 
   html: {
@@ -110,7 +117,9 @@ const Layout: React.FC = ({ title, children, theme, variant, ...props }) => {
     <>
       <ThemeProvider>
         <Header />
-        <Container size={variant}>{children}</Container>
+        <Container size={variant} as="main">
+          {children}
+        </Container>
         <Footer />
       </ThemeProvider>
     </>

@@ -6,11 +6,7 @@ import Link from '@/components/GatsbyLink';
 import Container from '@/components/Container';
 
 const Row = styled('section', {
-  background: '#134042',
-  width: '100vw',
-  position: 'relative',
-  marginLeft: '-50vw',
-  left: '50%',
+  // background: '#134042',
 });
 
 const Grid = styled('div', {
@@ -21,27 +17,23 @@ const Grid = styled('div', {
 });
 
 const Title = styled(ResourceTitle, {
-  fontFamily: 'Syne',
+  fontFamily: '$syne',
   textTransform: 'uppercase',
-  color: '$white100',
+  fontSize: '$6',
 });
 
-const ProjectDescripiton = styled(Body, {
-  color: '$white100',
-});
+const ProjectDescripiton = styled(Body, {});
 
-const ListProject: React.FC = () => (
+const ListProject: React.FC = ({ css }) => (
   <>
     {projects.map((item: ProjectType) => (
-      <Row css={{ background: `${item.background}` }}>
-        <Container size="medium">
-          <Grid>
-            <Title>{item.title}</Title>
-            <ProjectDescripiton>{item.description}</ProjectDescripiton>
-
-            <Link to={item.url}>View Project</Link>
-          </Grid>
-        </Container>
+      // <Row css={{ background: `${item.background}` }}>
+      <Row css={css}>
+        <Grid>
+          <Title>{item.title}</Title>
+          <ProjectDescripiton>{item.description}</ProjectDescripiton>
+          <Link to={item.url}>View Project</Link>
+        </Grid>
       </Row>
     ))}
   </>

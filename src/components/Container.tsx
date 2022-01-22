@@ -1,7 +1,7 @@
 import React from 'react';
 import { styled } from 'gatsby-theme-stitches/src/stitches.config';
 
-const Wrapper = styled('main', {
+const Wrapper = styled('div', {
   padding: '$2',
   margin: '0 auto',
 
@@ -27,15 +27,17 @@ const Wrapper = styled('main', {
 type ContainerProps = {
   size?: 'small' | 'medium' | 'large';
   css?: string;
+  as?: string;
 };
 
 const defaultProps: ContainerProps = {
   size: 'large',
   css: '',
+  as: 'div',
 };
 
-const Container: React.FC<ContainerProps> = ({ children, size, css }) => (
-  <Wrapper size={size} css={css}>
+const Container: React.FC<ContainerProps> = ({ children, size, css, as }) => (
+  <Wrapper size={size} css={css} as={as}>
     {children}
   </Wrapper>
 );
