@@ -37,31 +37,40 @@ const ContentWrapper = styled('div', {
 export default function ListPost({ data, css, withCategory }) {
   return (
     <PostListWrapper css={css}>
-      {data.map((post, i) => (
-        <Link
-          to={`/resources/${kebabCase(post.node.uid)}/`}
-          key={post.node.uid}
-        >
-          <ListItem>
-            {post.node.data.feature && (
-              <GatsbyImage
-                image={post.node.data.feature.gatsbyImageData}
-                alt={`Screenshot of ${post.node.data.title.text}`}
-                loading="lazy"
-              />
-            )}
-            <ContentWrapper>
-              {withCategory && post.node.data.categories ? (
-                <Meta type="label">
-                  {post.node.data.categories[0].category.document.data.name}
-                </Meta>
-              ) : null}
-              <ResourceTitle>{post.node.data.title.text}</ResourceTitle>
-              <SliceZone slices={post.node.data.body} components={components} />
-            </ContentWrapper>
-          </ListItem>
-        </Link>
-      ))}
+      {data.map((post, i) =>
+        post.node.data.url ? (
+          <Link
+            // to={`/resources/${kebabCase(post.node.uid)}/`}
+            to={post.node.data.url.url}
+            key={post.node.uid}
+            target="_blank"
+          >
+            <ListItem>
+              {post.node.data.feature && (
+                <GatsbyImage
+                  image={post.node.data.feature.gatsbyImageData}
+                  alt={`Screenshot of ${post.node.data.title.text}`}
+                  loading="lazy"
+                />
+              )}
+              <ContentWrapper>
+                {withCategory && post.node.data.categories ? (
+                  <Meta type="label">
+                    {post.node.data.categories[0].category.document.data.name}
+                  </Meta>
+                ) : null}
+                <ResourceTitle>{post.node.data.title.text}</ResourceTitle>
+                <SliceZone
+                  slices={post.node.data.body}
+                  components={components}
+                />
+              </ContentWrapper>
+            </ListItem>
+          </Link>
+        ) : (
+          console.error(`Missing URL${post.node.uid}`)
+        ),
+      )}
     </PostListWrapper>
   );
 }

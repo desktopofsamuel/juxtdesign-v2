@@ -57,6 +57,9 @@ export const postFragment = graphql`
           }
         }
       }
+      url {
+        url
+      }
       body {
         ... on PrismicSliceType {
           slice_type

@@ -9,8 +9,12 @@ import ListBlog from '@/components/ListBlog';
 import ListCategory from '@/components/ListCategory';
 import SEO from '@/components/SEO';
 
-const Text = styled('p', {});
+const Box = styled('div', {});
 
+const ContributeBox = styled('div', {
+  background: '$rice300',
+  padding: '$2 $3',
+});
 const Row = styled('div', {
   display: 'grid',
   gridTemplate: 'auto/repeat(12, 1fr)',
@@ -23,7 +27,7 @@ const Row = styled('div', {
 });
 
 export default function Index({ data }) {
-  const posts = data.allPrismicPost.edges.slice(0, 8);
+  const posts = data.allPrismicPost.edges.slice(0, 12);
   const blogs = data.allPrismicBlog.edges.slice(0, 3);
   const categories = data.allPrismicCategory.edges;
 
@@ -44,7 +48,13 @@ export default function Index({ data }) {
         >
           <ListBlog data={blogs} withImage withDate />
         </Row>
-        <ListCategory data={categories} css={{ gridColumn: 'span 3' }} />
+        <Box css={{ gridColumn: 'span 3' }}>
+          <ContributeBox>
+            <h5>Contribute to JUXT?</h5>
+            <p>Submit your design resources today!</p>
+          </ContributeBox>
+          <ListCategory data={categories} />
+        </Box>
 
         <ListPost data={posts} css={{ gridColumn: 'span 9' }} withCategory />
       </Row>
