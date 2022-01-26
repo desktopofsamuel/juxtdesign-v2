@@ -67,7 +67,146 @@ module.exports = {
         icon: `./static/favicon.svg`,
       },
     },
-    `gatsby-plugin-sitemap`,
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        output: `/sitemap.xml`,
+        // Exclude specific pages or groups of pages using glob parameters
+        // See: https://github.com/isaacs/minimatch
+        // The example below will exclude the single `path/to/page` and all routes beginning with `category`
+        query: `
+          {
+            site {
+              siteMetadata {
+                siteUrl
+              }
+            }
+            allSitePage {
+              nodes {
+                path
+              }
+            }
+          }
+        `,
+        // resolveSiteUrl: ({
+        //   site: {
+        //     siteMetadata: { url },
+        //   },
+        // }) => url,
+        // resolvePages: ({ allSitePage: { nodes: postnodes } }) => {
+        //   console.log(postnodes);
+        //   const posts = postnodes.map((post) => ({
+        //     path: post.path,
+        //     changefreq: 'weekly',
+        //     priority: 0.7,
+        //   }));
+        //   return [...posts];
+        // },
+        // serialize: ({ path, lastmod, changefreq, priority }) => ({
+        //   url: path,
+        //   lastmod,
+        //   changefreq,
+        //   priority,
+        // }),
+        // filterPages: ({ }) => {
+
+        // },
+        // excludes: [
+        //   `/dev-404-page`,
+        //   `/404`,
+        //   `/404.html`,
+        //   `/offline-plugin-app-shell-fallback`,
+        //   `/my-excluded-page`,
+        //   /(\/)?hash-\S*/, // you can also pass valid RegExp to exclude internal tags for example
+        // ],
+      },
+    },
+    // {
+    //   resolve: `gatsby-plugin-advanced-sitemap`,
+    //   options: {
+    //     // 1 query for each data type
+    //     query: `
+    //       {
+    //         allPrismicBlog {
+    //           edges {
+    //             node {
+    //               uid
+    //               id
+    //             }
+    //           }
+    //         }
+    //         allPrismicCategory {
+    //           edges {
+    //             node {
+    //               id
+    //               uid
+    //             }
+    //           }
+    //         }
+    //         allPrismicPost {
+    //           edges {
+    //             node {
+    //               uid
+    //               id
+    //             }
+    //           }
+    //         }
+    //       }
+    //       `,
+    //     // The filepath and name to Index Sitemap. Defaults to '/sitemap.xml'.
+    //     // output: "/custom-sitemap.xml",
+    //     mapping: {
+    //       // Each data type can be mapped to a predefined sitemap
+    //       // Routes can be grouped in one of: posts, tags, authors, pages, or a custom name
+    //       // The default sitemap - if none is passed - will be pages
+    //       allPrismicBlog: {
+    //         sitemap: `blogs`,
+    //         // Add a query level prefix to slugs, Don't get confused with global path prefix from Gatsby
+    //         // This will add a prefix to this perticular sitemap only
+    //         prefix: 'blog/',
+    //         serializer: (edges) =>
+    //           edges.map(
+    //             ({ node }) => node.uid, // Custom logic to change final sitemap.
+    //           ),
+    //       },
+    //       allPrismicCategory: {
+    //         sitemap: `tags`,
+    //         prefix: 'tags/',
+    //         serializer: (edges) =>
+    //           edges.map(
+    //             ({ node }) => node.uid, // Custom logic to change final sitemap.
+    //           ),
+    //       },
+    //       allPrismicPost: {
+    //         sitemap: `resources`,
+    //         prefix: 'resources/',
+    //         serializer: (edges) =>
+    //           edges.map(
+    //             ({ node }) => node.uid, // Custom logic to change final sitemap.
+    //           ),
+    //       },
+    //     },
+    //     exclude: [
+    //       `/dev-404-page`,
+    //       `/404`,
+    //       `/404.html`,
+    //       `/offline-plugin-app-shell-fallback`,
+    //       `/my-excluded-page`,
+    //       /(\/)?hash-\S*/, // you can also pass valid RegExp to exclude internal tags for example
+    //     ],
+    //     createLinkInHead: true, // optional: create a link in the `<head>` of your site
+    //     addUncaughtPages: true, // optional: will fill up pages that are not caught by queries and mapping and list them under `sitemap-pages.xml`
+    //     // additionalSitemaps: [ // optional: add additional sitemaps, which are e. g. generated somewhere else, but need to be indexed for this domain
+    //     //     {
+    //     //         name: `my-other-posts`,
+    //     //         url: `/blog/sitemap-posts.xml`,
+    //     //     },
+    //     //     {
+    //     //         url: `https://example.com/sitemap.xml`,
+    //     //     },
+    //     // ],
+    //   },
+    // },
     {
       resolve: 'gatsby-plugin-google-tagmanager',
       options: {
