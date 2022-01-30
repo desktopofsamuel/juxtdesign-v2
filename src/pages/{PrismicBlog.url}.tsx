@@ -33,6 +33,9 @@ function toTitleCase(str) {
 }
 
 export default function BlogTemplate({ data, pageContext }) {
+  {
+    console.log(data, pageContext);
+  }
   if (!data) return null;
   const doc = data.prismicBlog.data;
   return (
