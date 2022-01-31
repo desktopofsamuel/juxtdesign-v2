@@ -40,7 +40,11 @@ export default function GuidePage({ data }) {
 
 export const query = graphql`
   query GuidePageQuery {
-    featured: allMdx(filter: { frontmatter: { publish: { ne: false } } }) {
+    featured: allMdx(
+      filter: { frontmatter: { publish: { ne: false } } }
+      sort: { fields: fields___date, order: DESC }
+      limit: 6
+    ) {
       edges {
         node {
           ...mdxblog

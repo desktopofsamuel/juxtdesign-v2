@@ -5,7 +5,7 @@ import { styled } from 'gatsby-theme-stitches/src/stitches.config';
 import { components } from '../slices';
 import Layout from '@/components/Layout';
 import ListPost from '@/components/ListPost';
-import ListBlog from '@/components/ListBlog';
+import ListMdxBlog from '@/components/ListMdxBlog';
 import SEO from '@/components/SEO';
 import { PageTitle, Body } from '../styles/TextStyles';
 
@@ -27,7 +27,7 @@ const PostListWrapper = styled('div', {
 export default function CategoryTemplate({ data, pageContext }) {
   if (!data) return null;
   const item = data.prismicCategory.data;
-  const blogs = data.allPrismicBlog.edges;
+  const blogs = data.allMdx.edges;
   const posts = data.allPrismicPost.edges;
   const pageTitle = `Best ${item.name} Design Resources in ${dayjs().year()}`;
 
@@ -50,7 +50,7 @@ export default function CategoryTemplate({ data, pageContext }) {
         <>
           <h3>Guides</h3>
           <PostListWrapper>
-            <ListBlog data={blogs} withImage withDate />
+            <ListMdxBlog data={blogs} withImage withDate />
           </PostListWrapper>
         </>
       )}
@@ -72,18 +72,31 @@ export const query = graphql`
     prismicCategory(url: { eq: $url }) {
       ...category
     }
-    allPrismicBlog(
-      sort: { fields: data___date, order: DESC }
+    allMdx(
       filter: {
-        data: { categories: { elemMatch: { category: { url: { eq: $url } } } } }
+        fields: { tagSlugs: { glob: $url } }
+        frontmatter: { publish: { ne: false } }
       }
+      sort: { fields: fields___date, order: DESC }
     ) {
       edges {
         node {
-          ...blog
+          ...mdxblog
         }
       }
     }
+    # allPrismicBlog(
+    #   sort: { fields: data___date, order: DESC }
+    #   filter: {
+    #     data: { categories: { elemMatch: { category: { url: { eq: $url } } } } }
+    #   }
+    # ) {
+    #   edges {
+    #     node {
+    #       ...blog
+    #     }
+    #   }
+    # }
     allPrismicPost(
       sort: { fields: data___date, order: DESC }
       filter: {

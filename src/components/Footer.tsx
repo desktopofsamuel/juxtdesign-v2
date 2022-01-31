@@ -2,7 +2,7 @@ import React from 'react';
 import { styled } from 'gatsby-theme-stitches/src/stitches.config';
 import GatsbyLink from '@/components/GatsbyLink';
 import Container from '@/components/Container';
-import { ResourceTitle } from '@/styles/TextStyles';
+import { ResourceTitle, Meta } from '@/styles/TextStyles';
 import NewsletterForm from './newsletterform';
 
 const Background = styled('footer', {
@@ -35,6 +35,10 @@ const Wrapper = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   gap: '$2',
+});
+
+const SmallText = styled(Meta, {
+  color: '$onPrimary',
 });
 
 export default function Footer() {
@@ -72,7 +76,7 @@ export default function Footer() {
                 target="_blank"
               >
                 <div class="revue-form-group">
-                  <label for="member_email">Email address</label>
+                  <label for="member_email">Email address*</label>
                   <input
                     class="revue-form-field"
                     placeholder="Your email address..."
@@ -82,9 +86,7 @@ export default function Footer() {
                   />
                 </div>
                 <div class="revue-form-group">
-                  <label for="member_first_name">
-                    First name <span class="optional">(Optional)</span>
-                  </label>
+                  <label for="member_first_name">First name</label>
                   <input
                     class="revue-form-field"
                     placeholder="First name... (Optional)"
@@ -94,9 +96,7 @@ export default function Footer() {
                   />
                 </div>
                 <div class="revue-form-group">
-                  <label for="member_last_name">
-                    Last name <span class="optional">(Optional)</span>
-                  </label>
+                  <label for="member_last_name">Last name</label>
                   <input
                     class="revue-form-field"
                     placeholder="Last name... (Optional)"
@@ -114,7 +114,7 @@ export default function Footer() {
                   />
                 </div>
                 <div class="revue-form-footer">
-                  By subscribing, you agree with Revue’s{' '}
+                  By subscribing, you agree with Revue’s
                   <a target="_blank" href="https://www.getrevue.co/terms">
                     Terms of Service
                   </a>{' '}
