@@ -8,11 +8,12 @@ import MdxProvider from '@/components/MDXProvider';
 import { PageTitle, Meta } from '@/styles/TextStyles';
 import config from '../../SiteConfig';
 import GatsbyLink from '@/components/GatsbyLink';
+import SEO from '@/components/SEO';
 
 const Grid = styled('div', {
   display: 'grid',
   // gridTemplateColumns: 'minmax(24px, 1fr) 8fr minmax(24px, 1fr)',
-  gridTemplateColumns: '1fr 1fr 1fr 1fr',
+  gridTemplateColumns: '1fr 1fr auto',
   // gap: '5vw',
   rowGap: '$2',
 
@@ -32,12 +33,13 @@ const BlogPageTemplate = ({ data, pageContext }) => {
   return (
     <MdxProvider>
       <Layout variant="medium">
+        <SEO postPath={pageContext.slug} postSEO postNode={postNode} />
         <PageTitle>{postNode.fields.title}</PageTitle>
         <Grid>
           <Wrapper>
             <Meta type="label">Updated on</Meta>
             <Meta type="value">
-              <time>{post.date}</time>
+              <time>{postNode.fields.date}</time>
             </Meta>
           </Wrapper>
           <Wrapper>
@@ -76,27 +78,7 @@ const BlogPageTemplate = ({ data, pageContext }) => {
 export const query = graphql`
   query MdxMdxBlogQuery($slug: String!) {
     mdx(fields: { slug: { eq: $slug } }) {
-      fields {
-        date
-        slug
-        title
-        categorySlug
-      }
-      slug
-      excerpt
-      body
-      frontmatter {
-        date
-        featured
-        publish
-        tags
-        title
-        socialImage {
-          childImageSharp {
-            gatsbyImageData
-          }
-        }
-      }
+      ...mdxblogdetail
     }
   }
 `;

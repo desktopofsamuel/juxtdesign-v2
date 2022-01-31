@@ -35,6 +35,56 @@ export const postFragment = graphql`
     }
   }
 
+  fragment mdxblog on Mdx {
+    frontmatter {
+      category
+      date
+      featured
+      publish
+      socialImage {
+        childImageSharp {
+          gatsbyImageData
+        }
+      }
+      # tags
+      title
+    }
+    excerpt
+    fields {
+      categorySlug
+      date(fromNow: true)
+      slug
+      tagSlugs
+      title
+    }
+  }
+
+  fragment mdxblogdetail on Mdx {
+    frontmatter {
+      category
+      date
+      featured
+      publish
+      socialImage {
+        publicURL
+        childImageSharp {
+          gatsbyImageData
+        }
+      }
+      tags
+      title
+    }
+    body
+    excerpt
+    fields {
+      categorySlug
+      date(formatString: "DD MMM YYYY")
+      slug
+      tagSlugs
+      title
+    }
+  }
+
   fragment post on PrismicPost {
     data {
       title {

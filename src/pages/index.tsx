@@ -5,7 +5,7 @@ import Link from '@/components/GatsbyLink';
 import Title from '@/components/Title';
 import Layout from '@/components/Layout';
 import ListPost from '@/components/ListPost';
-import ListBlog from '@/components/ListBlog';
+import ListMdxBlog from '@/components/ListMdxBlog';
 import ListCategory from '@/components/ListCategory';
 import SEO from '@/components/SEO';
 
@@ -27,8 +27,9 @@ const Row = styled('div', {
 });
 
 export default function Index({ data }) {
-  const posts = data.allPrismicPost.edges.slice(0, 12);
-  const blogs = data.allPrismicBlog.edges.slice(0, 3);
+  const posts = data.allPrismicPost.edges;
+  // const blogs = data.allPrismicBlog.edges.slice(0, 3);
+  const blogs = data.allMdx.edges;
   const categories = data.allPrismicCategory.edges;
 
   return (
@@ -46,7 +47,7 @@ export default function Index({ data }) {
             },
           }}
         >
-          <ListBlog data={blogs} withImage withDate />
+          <ListMdxBlog data={blogs} withImage withDate />
         </Row>
         <Box css={{ gridColumn: 'span 3' }}>
           <ContributeBox>
@@ -64,14 +65,18 @@ export default function Index({ data }) {
 
 export const query = graphql`
   query IndexQuery {
-    allPrismicBlog(sort: { fields: data___date, order: DESC }) {
+    allMdx(
+      filter: { frontmatter: { publish: { ne: false } } }
+      sort: { fields: fields___date, order: DESC }
+      limit: 3
+    ) {
       edges {
         node {
-          ...blog
+          ...mdxblog
         }
       }
     }
-    allPrismicPost(sort: { fields: data___date, order: DESC }) {
+    allPrismicPost(sort: { fields: data___date, order: DESC }, limit: 12) {
       edges {
         node {
           ...post

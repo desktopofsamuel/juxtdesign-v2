@@ -25,7 +25,7 @@ const onCreateNode = ({ node, actions, getNode }) => {
 
     // }
 
-    const kebabFilename = kebabCase(fileNode.name);
+    const kebabFilename = kebabCase(fileNode.sourceInstanceName);
 
     const fileSlug = createFilePath({
       node,
@@ -40,9 +40,18 @@ const onCreateNode = ({ node, actions, getNode }) => {
       Object.prototype.hasOwnProperty.call(node.frontmatter, 'slug')
     ) {
       postSlug = node.frontmatter.slug;
-    } else {
-      postSlug = kebabFilename;
     }
+    // if (
+    //   Object.prototype.hasOwnProperty.call(node, 'frontmatter') &&
+    //   Object.prototype.hasOwnProperty.call(node.frontmatter, 'title')
+    // )
+    else {
+      postSlug = kebabCase(node.frontmatter.title);
+    }
+    // else {
+    //   postSlug = kebabFilename;
+    //   console.log(kebabFilename);
+    // }
 
     createNodeField({
       node,
@@ -59,14 +68,15 @@ const onCreateNode = ({ node, actions, getNode }) => {
     //   fileName = fileNode.name;
     // }
 
+    const postTitle = node.frontmatter.title || fileNode.name;
+
     createNodeField({
       node,
       name: 'title',
-      value: node.frontmatter.title || fileNode.name,
+      value: postTitle,
     });
 
     // const date = fileNode.birthTime;
-    const dateFormat = `DD MMM YYYY`;
     // const processedFileDate = dayjs(date).format(dateFormat);
 
     if (node.frontmatter.date) {
@@ -76,15 +86,22 @@ const onCreateNode = ({ node, actions, getNode }) => {
       createNodeField({
         node,
         name: 'date',
-        value: dayjs(node.frontmatter.date).format(dateFormat),
+        value: dayjs(node.frontmatter.date).toDate(),
       });
     } else {
       createNodeField({
         node,
         name: 'date',
-        value: dayjs(fileNode.birthTime).format(dateFormat),
+        value: dayjs(fileNode.birthTime).toDate(),
       });
     }
+
+    // const dateFormat = `DD MMM YYYY`;
+    // createNodeField({
+    //   node,
+    //   name: 'date',
+    //   value: dayjs(fileNode.birthTime).format(dateFormat),
+    // });
 
     // console.log(processedFrontmatterDate, processedFileDate);
 

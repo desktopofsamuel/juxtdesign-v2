@@ -30,14 +30,14 @@ export default function SEO({
   let postURL;
 
   if (postSEO) {
-    const postMeta = postNode;
+    const postMeta = postNode.frontmatter;
     // console.log(postMeta);
-    title = `${postMeta.title.text} | ${config.siteTitleShort}`;
-    description = postMeta.excerpt
-      ? postMeta.excerpt.text
-      : config.siteDescription;
-    image = postMeta.feature.localFile
-      ? postMeta.feature.localFile.publicURL
+    title = postNode.fields.title
+      ? postNode.fields.title
+      : config.siteTitleShort;
+    description = postNode.excerpt ? postNode.excerpt : config.siteDescription;
+    image = postMeta.socialImage
+      ? postMeta.socialImage.publicURL
       : config.siteLogo;
     // console.log(image);
     postURL = urljoin(config.siteUrl, config.pathPrefix, postPath);

@@ -12,14 +12,14 @@ exports.onCreateWebpackConfig = ({ actions }) => {
   });
 };
 
-exports.createSchemaCustomization = ({ actions }) => {
+exports.createSchemaCustomization = ({ actions, schema }) => {
   const { createTypes } = actions;
-  const typeDefs = `
-    type Mdx implements Node @dontInfer {
+  const typeDefs = [
+    `type Mdx implements Node {
       frontmatter: Frontmatter
       fields: Fields
-    }
-    type Frontmatter {
+    }`,
+    `type Frontmatter {
       title: String
       date: Date
       tags: [String]
@@ -27,15 +27,14 @@ exports.createSchemaCustomization = ({ actions }) => {
       publish: Boolean
       featured: Boolean
       socialImage: File @fileByRelativePath
-    }
-    type Fields {
+    }`,
+    `type Fields {
       title: String!
       slug: String!
-      date: Date!
+      date: Date! @dateformat
       tagSlugs: [String]
       categorySlug: String
-    }
-  `;
-
+    }`,
+  ];
   createTypes(typeDefs);
 };
