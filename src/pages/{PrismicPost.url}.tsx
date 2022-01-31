@@ -8,9 +8,12 @@ import SEO from '@/components/SEO';
 export default function PostTemplate({ data, pageContext }) {
   if (!data) return null;
   const doc = data.prismicPost.data;
+  {
+    console.log(data, pageContext);
+  }
   return (
     <Layout>
-      <SEO postPath={pageContext.url} postSEO postNode={doc} />
+      {/* <SEO postPath={pageContext.url} postSEO postNode={doc} /> */}
       <h1>{doc.title.text}</h1>
       <SliceZone slices={doc.body} components={components} />
     </Layout>
