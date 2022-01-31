@@ -276,5 +276,78 @@ module.exports = {
         enableWebVitalsTracking: true,
       },
     },
+    {
+      resolve: 'gatsby-plugin-feed',
+      options: {
+        setup(ref) {
+          const ret = ref.query.site.siteMetadata.rssMetadata;
+          ret.allMdx = ref.query.allMdx;
+          ret.generator = 'GatsbyJS Advanced Starter';
+          return ret;
+        },
+        query: `
+        {
+          site {
+            siteMetadata {
+              rssMetadata {
+                site_url
+                feed_url
+                title
+                description
+                image_url
+                copyright
+                author
+              }
+            }
+          }
+        }
+      `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allMdx } }) =>
+              allMdx.edges.map((edge) => ({
+                ...edge.node.frontmatter,
+                description: edge.node.excerpt,
+                date: edge.node.fields.date,
+                url: `${site.siteMetadata.rssMetadata.site_url}${edge.node.fields.slug}`,
+                guid: `${site.siteMetadata.rssMetadata.site_url}${edge.node.fields.slug}`,
+                author: site.siteMetadata.rssMetadata.author,
+                custom_elements: [{ 'content:encoded': edge.node.html }],
+              })),
+            query: `
+            {
+              allMdx(
+                filter: {frontmatter: {publish: {ne: false}}}
+                sort: {order: DESC, fields: fields___date}
+              ) {
+                edges {
+                  node {
+                    frontmatter {
+                      category
+                      date
+                      featured
+                      publish
+                      title
+                    }
+                    html
+                    slug
+                    excerpt(pruneLength: 300)
+                    fields {
+                      slug
+                      title
+                      date
+
+                    }
+                  }
+                }
+              }
+            }
+            `,
+            output: '/rss.xml',
+            title: config.siteRssTitle,
+          },
+        ],
+      },
+    },
   ],
 };
