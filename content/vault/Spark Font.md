@@ -1,6 +1,9 @@
 ---
 title: 'Create Sparkline Charts Without Any Code Using Sparks'
+date: '2022-01-13'
 socialImage: '/media/20220113-Sparkline-OG.png'
+tags:
+  - typography
 ---
 
 Sparkline is a tiny chart to visualise trends of a series of data values. After The Flood created Sparks font to generate sparkline chart using a line of text, no Excel or any design software is required. Therefore you can use it anywhere, like Powerpoint, website or basically anywhere you can think of.

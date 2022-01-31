@@ -1,6 +1,6 @@
 ---
 title: 'Design Better Search Box and Make Search Journey More User Friendly?'
-date: '01-05-2022'
+date: '2022-01-05'
 tags:
   - User Interface
   - Searching
@@ -8,6 +8,8 @@ tags:
   - Design Tips
 socialImage: '/media/20220115-SearchBox-OG.png'
 ---
+
+![](media/20220115-SearchBox-OG.png)
 
 Recently, I worked on a concept design for a Electric Vehicle Charging Map App. Here's a recap of my thinking process, — how to enhance usability for a Search Journey?
 
@@ -24,3 +26,6 @@ Here’s some tips for enhancing usability for search journeys:
 - Add Search predictions
 - Think of error scenarios (e.g. for typo)
 - Define your success metrics and track it
+
+![](media/20220115-SearchBox-02.png)
+![](media/20220115-SearchBox-03.png)
