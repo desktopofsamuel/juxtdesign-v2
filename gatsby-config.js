@@ -269,6 +269,14 @@ module.exports = {
     //   },
     // },
     {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: config.siteUrl,
+        sitemap: `${config.siteUrl}/sitemap/sitemap-index.xml`,
+        policy: [{ userAgent: '*', allow: '/' }],
+      },
+    },
+    {
       resolve: 'gatsby-plugin-google-tagmanager',
       options: {
         id: 'GTM-KMZKK6Q',
