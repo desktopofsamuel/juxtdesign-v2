@@ -61,7 +61,7 @@ export default function Index({ data }) {
           <ContributeBox css={{ display: 'flex', flexDirection: 'column' }}>
             <Subtitle>Contribute to JUXT?</Subtitle>
             <Meta>Got any design resources or feedback?</Meta>
-            <Button to="https://airtable.com/shrpq3JSU6Xd6hemf">
+            <Button to="https://airtable.com/shrpq3JSU6Xd6hemf" target="_blank">
               Submit Now
             </Button>
           </ContributeBox>

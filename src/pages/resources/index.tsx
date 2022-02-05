@@ -20,22 +20,7 @@ export const query = graphql`
     allPrismicPost(sort: { fields: data___date, order: DESC }) {
       edges {
         node {
-          data {
-            title {
-              text
-            }
-            feature {
-              gatsbyImageData
-            }
-            body {
-              ... on PrismicSliceType {
-                slice_type
-              }
-              ...PostDataBodyText
-              ...PostDataBodyQuote
-            }
-          }
-          uid
+          ...post
         }
       }
     }

@@ -56,10 +56,10 @@ export default function Footer() {
           <Wrapper>
             <SectionTitle>Follow</SectionTitle>
             <FooterLink target="_blank" to="https://twitter.com/juxtdesigncc">
-              Twitter <FaExternalLinkAlt size={16} />
+              Twitter <FaExternalLinkAlt size={12} />
             </FooterLink>
             <FooterLink target="_blank" to="https://instagram.com/juxtdesigncc">
-              Instagram <FaExternalLinkAlt size={16} />
+              Instagram <FaExternalLinkAlt size={12} />
             </FooterLink>
           </Wrapper>
           <Wrapper>
