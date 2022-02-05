@@ -83,8 +83,14 @@ const SubMenuItem = styled(Link, {
 const Header: React.FC = () => (
   <Wrapper>
     <Grid>
-      <MobileNavItem to="/guides/">Guides</MobileNavItem>
-      <Link to="/" style={{ margin: '0 24px' }}>
+      <Link
+        to="/"
+        style={{
+          height: '80px',
+          display: 'grid',
+          placeContent: 'center center',
+        }}
+      >
         {/* <Logo src={SiteLogo} fill={currentColor} alt="Site Logo" />
          */}
         <svg
@@ -211,7 +217,6 @@ const Header: React.FC = () => (
         </NavItem>
       </NavItems>
       <DarkToggle />
-      <MobileNavItem to="/resources/">Resources</MobileNavItem>
     </Grid>
     {/* <DarkModeToggle /> */}
   </Wrapper>
