@@ -13,9 +13,10 @@ const Item = styled(Link, {
   color: '$body',
   textDecoration: 'none',
   transition: '$default',
-  padding: '$2 0 $2 $2',
-  margin: '0 0 $2 -$2',
+  padding: '$3 0 $3 $2',
+  margin: '0 0 $2 0',
   borderRight: '4px $transparent solid',
+  placeContent: 'center center',
 
   '&:hover': {
     backgroundColor: '$onBackgroundHover',

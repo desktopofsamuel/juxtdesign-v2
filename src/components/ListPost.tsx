@@ -30,7 +30,7 @@ const ListItem = styled('div', {
 });
 
 const ContentWrapper = styled('div', {
-  padding: '$2',
+  padding: '$3',
   textDecoration: 'none',
 });
 

@@ -8,12 +8,20 @@ import ListPost from '@/components/ListPost';
 import ListMdxBlog from '@/components/ListMdxBlog';
 import ListCategory from '@/components/ListCategory';
 import SEO from '@/components/SEO';
+import GatsbyLink from 'gatsby-link';
+import Button from '@/components/Button';
+import { Meta, ResourceTitle, Subtitle } from '@/styles/TextStyles';
 
 const Box = styled('div', {});
 
 const ContributeBox = styled('div', {
-  background: '$rice300',
-  padding: '$2 $3',
+  background: '$backgroundDarker',
+  padding: '$3 $4',
+  gap: '$3',
+
+  h3: {
+    margin: '$0',
+  },
 });
 const Row = styled('div', {
   display: 'grid',
@@ -50,9 +58,12 @@ export default function Index({ data }) {
           <ListMdxBlog data={blogs} withImage withDate />
         </Row>
         <Box css={{ gridColumn: 'span 3' }}>
-          <ContributeBox>
-            <h5>Contribute to JUXT?</h5>
-            <p>Submit your design resources today!</p>
+          <ContributeBox css={{ display: 'flex', flexDirection: 'column' }}>
+            <Subtitle>Contribute to JUXT?</Subtitle>
+            <Meta>Got any design resources or feedback?</Meta>
+            <Button to="https://airtable.com/shrpq3JSU6Xd6hemf">
+              Submit Now
+            </Button>
           </ContributeBox>
           <ListCategory data={categories} />
         </Box>

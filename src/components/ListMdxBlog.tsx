@@ -8,6 +8,7 @@ import { ResourceTitle, Body, Meta } from '../styles/TextStyles';
 import Link from './GatsbyLink';
 
 const Article = styled('article', {
+  paddingBottom: '$4',
   marginBottom: '$4',
   borderBottom: '1px solid $border',
 });
@@ -49,7 +50,6 @@ export default function ListMdxBlog({ data, css, withDate, withImage }) {
         <Article
           key={i}
           css={css}
-          padding="4"
           _hover={{ boxShadow: `0px 2px 2px rgba(0, 0, 0, 0.1)` }}
         >
           <Wrap

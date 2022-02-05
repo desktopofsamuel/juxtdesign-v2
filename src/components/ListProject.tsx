@@ -2,7 +2,7 @@ import React from 'react';
 import { styled } from 'gatsby-theme-stitches/src/stitches.config';
 import { ResourceTitle, Body, ProjectTitle } from '../styles/TextStyles';
 import projects from '../../content/project.json';
-import Link from '@/components/GatsbyLink';
+import Button from '@/components/Button';
 import Container from '@/components/Container';
 
 const Row = styled('section', {
@@ -36,7 +36,8 @@ const ListProject: React.FC = ({ css }) => (
         <Grid>
           <Title>{item.title}</Title>
           <ProjectDescripiton>{item.description}</ProjectDescripiton>
-          <Link to={item.url}>View Project</Link>
+
+          <Button to={item.url}>View Project</Button>
         </Grid>
       </Row>
     ))}

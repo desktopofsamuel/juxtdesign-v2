@@ -23,7 +23,7 @@ const Grid = styled('div', {
 });
 
 const Container = styled('div', {
-  padding: '$2',
+  padding: '$3',
   margin: '0 auto',
   maxWidth: '$space$medium',
   paddingBottom: '$2',

@@ -24,6 +24,15 @@ export const ResourceTitle = styled('h2', {
   },
 });
 
+export const Subtitle = styled('h3', {
+  margin: '0',
+  fontSize: '$3',
+  fontFamily: '$sans',
+  fontWeight: '$bold',
+  textTransform: 'none',
+  color: '$onBackground',
+})
+
 export const Body = styled('p', {
   margin: '0',
   fontSize: '$3',
