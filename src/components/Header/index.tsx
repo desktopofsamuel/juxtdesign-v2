@@ -4,6 +4,7 @@ import { StaticImage } from 'gatsby-plugin-image';
 import Link from '@/components/GatsbyLink';
 import DarkToggle from './DarkToggle';
 import Submenu from './Submenu';
+import { FaChevronDown } from 'react-icons/fa';
 
 const Wrapper = styled('nav', {
   width: '100%',
@@ -36,7 +37,10 @@ const Logo = styled('img', {
 
 const NavItem = styled(Link, {
   height: '80px',
-  display: 'grid',
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  gap: '$2',
   color: '$body',
   placeContent: 'center center',
   padding: '0 $5',
@@ -112,7 +116,8 @@ const Header: React.FC = () => (
           Home
         </NavItem>
         <NavItem to="/resources/" activeClassName="nav-item-active">
-          <p>Categories ›</p>
+          <p>Categories</p>
+          <FaChevronDown size={12} />
           <Submenu>
             <SubMenuItem to="/tags/careers/">
               <StaticImage
