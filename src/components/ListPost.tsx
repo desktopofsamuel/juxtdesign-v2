@@ -14,7 +14,7 @@ const PostListWrapper = styled('div', {
   gridTemplateColumns: '1fr 1fr',
 
   '@md': {
-    gridTemplateColumns: '1fr',
+    display: 'block',
   },
 });
 
@@ -40,8 +40,8 @@ export default function ListPost({ data, css, withCategory }) {
       {data.map((post, i) =>
         post.node.data.url ? (
           <Link
-            // to={`/resources/${kebabCase(post.node.uid)}/`}
-            to={post.node.data.url.url}
+            to={post.node.url}
+            // to={post.node.data.url.url}
             key={post.node.uid}
             target="_blank"
           >

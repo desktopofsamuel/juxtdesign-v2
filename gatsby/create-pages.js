@@ -1,4 +1,5 @@
 const path = require('path');
+const kebabCase = require('lodash.kebabcase');
 // const _ = require('lodash');
 
 // const createCategoriesPages = require('./pagination/create-categories-pages.js');
@@ -7,7 +8,7 @@ const path = require('path');
 
 const query = `
   {
-    posts: allMdx(
+    guides: allMdx(
       filter: {frontmatter: {publish: {ne: false}}, fileAbsolutePath: {regex: "/vault/"}}
     ) {
       edges {
@@ -21,15 +22,29 @@ const query = `
         }
       }
     }
+    posts: allPrismicPost {
+      edges {
+        node {
+          url
+          data {
+            categories {
+              category {
+                url
+              }
+            }
+          }
+        }
+      }
+    }
   }
 `;
 
 const createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
-
+  const tagSet = new Set();
   const response = await graphql(query);
   if (response.errors) throw new Error(response.errors);
-  const { posts, pages } = response.data;
+  const { guides, posts } = response.data;
 
   // pages.edges.forEach(({ node }) => {
   //   createPage({
@@ -39,13 +54,41 @@ const createPages = async ({ graphql, actions }) => {
   //   });
   // });
 
-  posts.edges.forEach(({ node }) => {
+  guides.edges.forEach(({ node }) => {
+    if (node.frontmatter.tags) {
+      node.frontmatter.tags.forEach((tag) => {
+        tagSet.add(tag);
+      });
+    }
+
     createPage({
       path: node.fields.slug,
       component: path.resolve('./src/templates/blog-template.js'),
       context: { slug: node.fields.slug },
     });
   });
+
+  posts.edges.forEach(({ node }) => {
+    createPage({
+      path: node.url,
+      component: path.resolve('./src/templates/post-template.tsx'),
+      context: {
+        slug: node.url,
+        tag: node.data.categories.map((item) => item.category.url),
+      },
+    });
+  });
+
+  // tagSet.forEach((tag) => {
+  //   createPage({
+  //     path: `/tags/${kebabCase(tag)}/`,
+  //     component: path.resolve('./src/pages/{PrismicCategory.url}.tsx'),
+  //     context: {
+  //       tag,
+  //       slug: `/tags/${kebabCase(tag)}/`,
+  //     },
+  //   });
+  // });
 
   // await createTagsPages(graphql, actions);
   // await createPostsPages(graphql, actions);

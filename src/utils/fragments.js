@@ -120,6 +120,7 @@ export const postFragment = graphql`
       }
     }
     uid
+    url
   }
 
   fragment category on PrismicCategory {
