@@ -4,6 +4,7 @@ tags:
   - OKR
   - Careers
 category: 'reflection'
+publish: false
 date: 2022-01-01
 socialImage: 'media/design-okr-update-2021q3.png'
 ---

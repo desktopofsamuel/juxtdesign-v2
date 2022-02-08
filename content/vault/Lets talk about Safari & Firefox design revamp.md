@@ -5,7 +5,7 @@ tags:
   - revamp
   - user-interface
 featured: true
-featurePhoto: 'media/20210616-SafariFirefoxRevamp-OG.png'
+socialImage: 'media/20210616-SafariFirefoxRevamp-OG.png'
 ---
 
 Brand new Safari and Firefox were both announced this month. Both versions received major design iterations. Which do you prefer?
