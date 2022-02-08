@@ -41,6 +41,12 @@ export const Body = styled('p', {
   color: '$body',
 });
 
+export const Subheading = styled('p', {
+  fontWeight: '$regular',
+  fontSize: '$3',
+  textTransform: 'uppercase',
+});
+
 export const Meta = styled('p', {
   margin: '0',
   fontSize: '$3',

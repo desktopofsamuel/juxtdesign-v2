@@ -43,7 +43,13 @@ const Image = styled(GatsbyImage, {
   },
 });
 
-export default function ListMdxBlog({ data, css, withDate, withImage }) {
+export default function ListMdxBlog({
+  data,
+  css,
+  withDate,
+  withImage,
+  withDescription,
+}) {
   return (
     <>
       {data.map((post, i) => (
@@ -69,7 +75,7 @@ export default function ListMdxBlog({ data, css, withDate, withImage }) {
                 )
               : null}
             <ResourceTitle>{post.node.fields.title}</ResourceTitle>
-            <Body>{post.node.excerpt}</Body>
+            {withDescription ? <Body>{post.node.excerpt}</Body> : null}
             {/* <SliceZone slices={post.node.data.body} components={components} /> */}
             {withDate && <Meta type="label">{post.node.fields.date}</Meta>}
           </Wrap>

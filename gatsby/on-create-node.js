@@ -6,12 +6,10 @@ const { createFilePath } = require('gatsby-source-filesystem');
 
 const onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
-  const fileNode = getNode(node.parent);
 
   fmImagesToRelative(node);
 
   if (node.internal.type === 'Mdx') {
-    // const source = fileNode.sourceInstanceName;
     // const parsedFilePath = path.parse(fileNode.relativePath);
     // let title;
     // let slug;
@@ -25,39 +23,51 @@ const onCreateNode = ({ node, actions, getNode }) => {
 
     // }
 
-    const kebabFilename = kebabCase(fileNode.sourceInstanceName);
+    // const kebabFilename = kebabCase(fileNode.sourceInstanceName);
 
-    const fileSlug = createFilePath({
-      node,
-      getNode,
-      basePath: `vault/`,
-    });
+    const fileNode = getNode(node.parent);
+    const source = fileNode.sourceInstanceName;
+    const parsedFilePath = fileNode.relativePath;
+
+    // console.log(`\n`, parsedFilePath);
+
+    // const fileSlug = createFilePath({
+    //   node,
+    //   getNode,
+    //   basePath: `vault/`,
+    // });
 
     let postSlug;
 
     if (
       Object.prototype.hasOwnProperty.call(node, 'frontmatter') &&
-      Object.prototype.hasOwnProperty.call(node.frontmatter, 'slug')
+      Object.prototype.hasOwnProperty.call(node.frontmatter, 'slug') &&
+      node.frontmatter.slug
     ) {
       postSlug = node.frontmatter.slug;
-    }
-    // if (
-    //   Object.prototype.hasOwnProperty.call(node, 'frontmatter') &&
-    //   Object.prototype.hasOwnProperty.call(node.frontmatter, 'title')
-    // )
-    else {
+    } else if (
+      Object.prototype.hasOwnProperty.call(node, 'frontmatter') &&
+      Object.prototype.hasOwnProperty.call(node.frontmatter, 'title') &&
+      node.frontmatter.title
+    ) {
       postSlug = kebabCase(node.frontmatter.title);
+    } else {
+      postSlug = fileNode.name;
     }
-    // else {
-    //   postSlug = kebabFilename;
-    //   console.log(kebabFilename);
-    // }
-
-    createNodeField({
-      node,
-      name: 'slug',
-      value: `/guides/${postSlug}/`,
-    });
+    console.log(source);
+    if (source === 'posts') {
+      createNodeField({
+        node,
+        name: 'slug',
+        value: `/guides/${postSlug}/`,
+      });
+    } else {
+      createNodeField({
+        node,
+        name: 'slug',
+        value: `/${postSlug}/`,
+      });
+    }
 
     // if (
     //   Object.prototype.hasOwnProperty.call(node, 'frontmatter') &&
@@ -75,6 +85,24 @@ const onCreateNode = ({ node, actions, getNode }) => {
       name: 'title',
       value: postTitle,
     });
+
+    if (
+      Object.prototype.hasOwnProperty.call(node, 'frontmatter') &&
+      Object.prototype.hasOwnProperty.call(node.frontmatter, 'socialImage') &&
+      node.frontmatter.socialImage
+    ) {
+      createNodeField({
+        node,
+        name: 'featured',
+        value: true,
+      });
+    } else {
+      createNodeField({
+        node,
+        name: 'featured',
+        value: false,
+      });
+    }
 
     // const date = fileNode.birthTime;
     // const processedFileDate = dayjs(date).format(dateFormat);

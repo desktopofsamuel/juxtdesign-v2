@@ -56,6 +56,7 @@ export const postFragment = graphql`
       slug
       tagSlugs
       title
+      featured
     }
   }
 
@@ -82,6 +83,7 @@ export const postFragment = graphql`
       slug
       tagSlugs
       title
+      featured
     }
   }
 

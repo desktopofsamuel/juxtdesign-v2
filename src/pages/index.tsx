@@ -55,7 +55,7 @@ export default function Index({ data }) {
             },
           }}
         >
-          <ListMdxBlog data={blogs} withImage withDate />
+          <ListMdxBlog data={blogs} withImage withDate withDescription />
         </Row>
         <Box css={{ gridColumn: 'span 3' }}>
           <ContributeBox css={{ display: 'flex', flexDirection: 'column' }}>
@@ -77,7 +77,10 @@ export default function Index({ data }) {
 export const query = graphql`
   query IndexQuery {
     allMdx(
-      filter: { frontmatter: { publish: { ne: false } } }
+      filter: {
+        fields: { featured: { eq: true } }
+        frontmatter: { publish: { ne: false } }
+      }
       sort: { fields: fields___date, order: DESC }
       limit: 3
     ) {

@@ -34,6 +34,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
       date: Date! @dateformat
       tagSlugs: [String]
       categorySlug: String
+      featured: Boolean!
     }`,
   ];
   createTypes(typeDefs);
