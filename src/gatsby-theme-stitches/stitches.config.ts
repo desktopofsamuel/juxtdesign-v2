@@ -86,7 +86,9 @@ export const {
       regular: '1.5',
       tight: '1.2',
     },
-    letterSpacings: {},
+    letterSpacings: {
+      sparse: '0.025em'
+    },
     sizes: {},
     borderWidths: {},
     borderStyles: {},

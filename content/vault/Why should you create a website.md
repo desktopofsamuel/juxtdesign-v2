@@ -50,6 +50,6 @@ The cost of creating your own website has dramatically went down over the years,
 
 **Notion** is also a good place to experiment your ideas, by making your pages public, especially if you have a lot of data / resources. Although you cannot you need to use third party service like [Super](https://super.so/) to convert to website. It's a good place to gather your content with a system.
 
-**Gatsby is** a React based framework that I personally love to use for my own portfolio as well as this website. It required some coding knowledge but with great extent of customization.
+**Gatsby** is a React-based static generator that I personally love to use for my own portfolio as well as this website. It required some coding knowledge but with great extent of customization.
 
 A more traditional approach would be **Wordpress, Wix or Squarespace,** they are still a great option with flexibility to create whatever you want.

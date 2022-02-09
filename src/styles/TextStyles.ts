@@ -42,9 +42,10 @@ export const Body = styled('p', {
 });
 
 export const Subheading = styled('p', {
-  fontWeight: '$regular',
-  fontSize: '$3',
+  fontWeight: '$bold',
+  fontSize: '$2',
   textTransform: 'uppercase',
+  letterSpacing: '$sparse',
 });
 
 export const Meta = styled('p', {

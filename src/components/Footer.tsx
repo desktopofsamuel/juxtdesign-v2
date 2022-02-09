@@ -2,7 +2,7 @@ import React from 'react';
 import { styled } from 'gatsby-theme-stitches/src/stitches.config';
 import GatsbyLink from '@/components/GatsbyLink';
 import Container from '@/components/Container';
-import { ResourceTitle, Meta } from '@/styles/TextStyles';
+import { Subheading, ResourceTitle, Meta } from '@/styles/TextStyles';
 import NewsletterForm from './newsletterform';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 
@@ -12,13 +12,16 @@ const Background = styled('footer', {
   padding: '$5 0',
 });
 
-const SectionTitle = styled(ResourceTitle, {
+const SectionTitle = styled(Subheading, {
   color: '$onPrimary',
 });
 
 const FooterLink = styled(GatsbyLink, {
   textDecoration: 'none',
   color: '$onPrimary',
+  '&:hover': {
+    textDecoration: 'underline',
+  },
 });
 
 const FooterLeft = styled('div', {});
@@ -36,10 +39,6 @@ const Wrapper = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   gap: '$3',
-});
-
-const SmallText = styled(Meta, {
-  color: '$onPrimary',
 });
 
 export default function Footer() {

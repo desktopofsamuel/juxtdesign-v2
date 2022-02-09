@@ -46,7 +46,7 @@ export const postFragment = graphql`
           gatsbyImageData
         }
       }
-      # tags
+      tags
       title
     }
     excerpt

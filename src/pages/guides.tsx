@@ -5,9 +5,10 @@ import Layout from '@/components/Layout';
 import ListMdxBlog from '@/components/ListMdxBlog';
 import SEO from '@/components/SEO';
 import { Subheading } from '@/styles/TextStyles';
+import ListSmallBlog from '@/components/ListSmallBlog';
 
 const PostListWrapper = styled('div', {
-  gridGap: '$3',
+  gridGap: '$4',
   gridColumn: 'span 12',
   display: 'grid',
   gridTemplateColumns: '1fr 1fr',
@@ -17,7 +18,17 @@ const PostListWrapper = styled('div', {
   },
 });
 
-const Wrapper = styled('section', {});
+const Guides = styled('section', {
+  display: 'grid',
+  gridTemplateColumns: '60% 40%',
+  gap: '$4',
+
+  '@md': {
+    gridTemplateColumns: '1fr',
+  },
+});
+
+const Wrapper = styled('div', {});
 
 export default function GuidePage({ data }) {
   const featuredBlogs = data.featured.edges;
@@ -28,23 +39,31 @@ export default function GuidePage({ data }) {
     <Layout>
       <SEO postPath="/guides/" pageTitle="Guides" />
       <h1>Guides</h1>
-      <h2>Featured</h2>
-      <PostListWrapper css={{ gridTemplateColumns: '1fr 1fr' }}>
+      <Subheading>Feature</Subheading>
+      <PostListWrapper>
         <ListMdxBlog data={featuredBlogs} withImage withDate withDescription />
       </PostListWrapper>
       {/* <PostListWrapper css={{ gridTemplateColumns: '1fr 1fr ' }}>
         <ListBlog data={featuredBlogs} withImage withDate />
       </PostListWrapper> */}
-      <Subheading>Guides</Subheading>
-      <PostListWrapper css={{ gridTemplateColumns: '60% 40%' }}>
-        <PostListWrapper css={{ gridTemplateColumns: '1fr' }}>
-          <ListMdxBlog data={guideBlogs} withDate withDescription />
-        </PostListWrapper>
+      <Guides>
+        <Wrapper>
+          <Subheading>Guides</Subheading>
+          <PostListWrapper css={{ gridTemplateColumns: '1fr' }}>
+            <ListMdxBlog data={guideBlogs} withDate withDescription />
+          </PostListWrapper>
+        </Wrapper>
+        <Wrapper>
+          <Subheading>Notes</Subheading>
+          <PostListWrapper css={{ gridTemplateColumns: '1fr' }}>
+            <ListSmallBlog data={restBlogs} />
+          </PostListWrapper>
+        </Wrapper>
         {/* <PostListWrapper css={{ gridTemplateColumns: '1fr' }}>
           <Subheading>Notes</Subheading>
           <ListMdxBlog data={restBlogs} />
         </PostListWrapper> */}
-      </PostListWrapper>
+      </Guides>
     </Layout>
   );
 }
