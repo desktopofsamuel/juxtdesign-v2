@@ -5,6 +5,7 @@ const kebabCase = require('lodash.kebabcase');
 // const createCategoriesPages = require('./pagination/create-categories-pages.js');
 // const createTagsPages = require('./pagination/create-tags-pages.js');
 // const createPostsPages = require('./pagination/create-posts-pages.js');
+const createResourcesPages = require('./pagination/create-resources-pages.js');
 
 const query = `
   {
@@ -78,6 +79,8 @@ const createPages = async ({ graphql, actions }) => {
       },
     });
   });
+
+  await createResourcesPages(graphql, actions);
 
   // tagSet.forEach((tag) => {
   //   createPage({
