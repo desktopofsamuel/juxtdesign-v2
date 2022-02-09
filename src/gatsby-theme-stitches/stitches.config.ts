@@ -44,6 +44,8 @@ export const {
       codeBackground: '$rice300',
       spark: '$primary',
       // Context
+      tagBackground: '$grey100',
+      tagText: '$onSurface',
     },
     transitions: {
       default: ' 0.2s all ease-in-out',
@@ -129,5 +131,7 @@ export const darkTheme = createTheme('dark-theme', {
     codeBackground: '$rice300',
     border: '#444444',
     spark: '$background',
+    tagBackground: '$backgroundHover',
+    tagText: '$white100',
   },
 });

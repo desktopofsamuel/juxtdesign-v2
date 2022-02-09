@@ -50,7 +50,7 @@ export default function CategoryTemplate({ data, pageContext }) {
         <>
           <h3>Guides</h3>
           <PostListWrapper>
-            <ListMdxBlog data={blogs} withImage withDate />
+            <ListMdxBlog data={blogs} withImage withDate withDescription />
           </PostListWrapper>
         </>
       )}

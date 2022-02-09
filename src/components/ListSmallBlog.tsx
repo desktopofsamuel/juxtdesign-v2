@@ -25,14 +25,14 @@ const Go = styled(Link, {
 const Flex = styled(`div`, {
   display: `flex`,
   flexDirection: `row`,
-  gap: `$4`,
+  gap: `$2`,
 });
 
 const Tag = styled(`span`, {
   padding: '$1 $2',
   borderRadius: '$2',
-  backgroundColor: `$primary`,
-  color: `$onPrimary`,
+  backgroundColor: '$tagBackground',
+  color: `$tagText`,
 });
 export default function ListSmallBlog({
   data,
@@ -55,11 +55,11 @@ export default function ListSmallBlog({
 
           <Flex>
             {post.node.frontmatter.tags ? (
-              <div>
+              <>
                 {post.node.frontmatter.tags.map((tag) => (
                   <Tag>#{tag}</Tag>
                 ))}
-              </div>
+              </>
             ) : null}
             <Go to={post.node.fields.slug}>
               <FaArrowRight size={12} />
