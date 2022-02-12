@@ -19,6 +19,7 @@ const query = `
           }
           frontmatter {
             title
+            tags
           }
         }
       }
@@ -80,18 +81,20 @@ const createPages = async ({ graphql, actions }) => {
     });
   });
 
-  await createResourcesPages(graphql, actions);
-
-  // tagSet.forEach((tag) => {
+  // const tagList = Array.from(tagSet);
+  // console.log(tagList);
+  // tagList.forEach((tag) => {
   //   createPage({
   //     path: `/tags/${kebabCase(tag)}/`,
-  //     component: path.resolve('./src/pages/{PrismicCategory.url}.tsx'),
+  //     component: path.resolve('./src/pages/templates/tag-template.tsx'),
   //     context: {
   //       tag,
   //       slug: `/tags/${kebabCase(tag)}/`,
   //     },
   //   });
   // });
+
+  await createResourcesPages(graphql, actions);
 
   // await createTagsPages(graphql, actions);
   // await createPostsPages(graphql, actions);

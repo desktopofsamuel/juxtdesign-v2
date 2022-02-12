@@ -32,7 +32,7 @@ const BlogPageTemplate = ({ data, pageContext }) => {
 
   return (
     <MdxProvider>
-      <Layout variant="medium">
+      <Layout variant="small">
         <SEO postPath={pageContext.slug} postSEO postNode={postNode} />
         <PageTitle>{postNode.fields.title}</PageTitle>
         <Grid>
