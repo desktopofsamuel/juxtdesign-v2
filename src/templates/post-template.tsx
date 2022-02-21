@@ -44,14 +44,19 @@ export default function PostTemplate({ data, pageContext }) {
   if (!data) return null;
   const doc = data.prismicPost.data;
   const related = data.related.edges;
+  // console.log(doc.body);
 
   return (
     <Layout>
       <SEO
         postPath={pageContext.slug}
         pageTitle={doc.title.text}
+        pageImage={doc.feature.url}
+        pageDescription={doc.body[0].primary.text.richText[0].text}
         postNode={doc}
       />
+      {console.log(doc.body[0].primary.text.richText[0].text)}
+
       <Flex>
         <Wrapper>
           <Divider>
@@ -77,6 +82,7 @@ export default function PostTemplate({ data, pageContext }) {
               )}
             <PageTitle>{doc.title.text}</PageTitle>
             <Code>{doc.url.url}</Code>
+            <p>{doc.body.richTExt}</p>
             <SliceZone slices={doc.body} components={components} />
             <Button to={doc.url.url}>
               Visit Now <FaExternalLinkAlt size={14} />

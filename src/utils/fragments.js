@@ -95,6 +95,7 @@ export const postFragment = graphql`
       feature {
         gatsbyImageData
         alt
+        url
       }
       categories {
         category {
