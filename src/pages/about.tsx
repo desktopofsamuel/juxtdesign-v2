@@ -33,6 +33,7 @@ const Half = styled('div', {
 });
 const Section = styled('section', {
   padding: '$4 0',
+  gap: '$4',
   display: 'grid',
   gridTemplateColumns: 'repeat(12, 1fr)',
 
@@ -188,9 +189,7 @@ export default function AboutPage() {
         <ListProject
           data={projects}
           css={{
-            gridColumn: 'span 8',
-            display: 'flex',
-            flexDirection: 'column',
+            gridColumn: 'span 12',
           }}
         />
       </Section>

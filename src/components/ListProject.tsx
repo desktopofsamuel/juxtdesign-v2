@@ -5,25 +5,26 @@ import projects from '../../content/project.json';
 import Button from '@/components/Button';
 import Container from '@/components/Container';
 
-const Row = styled('section', {
+const Row = styled('div', {
   // background: '#134042',
 });
 
 const Grid = styled('div', {
-  display: 'flex',
-  flexDirection: 'column',
+  display: 'grid',
+  gridTemplateColumns: '1fr 1fr',
+  gridGap: '$4',
+  alignItems: 'center',
   justifyContent: 'center',
-  minHeight: '30vh',
+});
 
-  '@md': {
-    minHeight: '10vh',
-  },
+const Wrapper = styled('div', {
+  display: 'grid',
+  gridGap: '$2',
 });
 
 const Title = styled(ResourceTitle, {
-  fontFamily: '$syne',
   textTransform: 'uppercase',
-  fontSize: '$6',
+  fontSize: '$4',
 });
 
 const ProjectDescripiton = styled(Body, {});
@@ -34,10 +35,12 @@ const ListProject: React.FC = ({ css }) => (
       // <Row css={{ background: `${item.background}` }}>
       <Row css={css}>
         <Grid>
-          <Title>{item.title}</Title>
-          <ProjectDescripiton>{item.description}</ProjectDescripiton>
-
-          <Button to={item.url}>View Project</Button>
+          <img src={item.image} alt={item.title} />
+          <Wrapper>
+            <Title>{item.title}</Title>
+            <ProjectDescripiton>{item.description}</ProjectDescripiton>
+            <Button to={item.url}>View Project</Button>
+          </Wrapper>
         </Grid>
       </Row>
     ))}

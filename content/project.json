@@ -1,5 +1,11 @@
 [
   {
+  "title": "Gatsby Starter Obsidian Garden",
+  "description": "A Gatsby starter template to publish Obsidian vault for free",
+  "url": "https://garden.gtsb.io/?utm_source=juxtdesigncc&utm_medium=about&utm_id=starter-obsidian",
+  "image": "https://repository-images.githubusercontent.com/460081542/3665b348-3c50-4a86-b204-68d753f22d50"
+},
+  {
     "title": "Keystroke",
     "description": "Figma template that can create keycap component (with auto-layout support). Great for making keyboard shortcuts.",
     "url": "https://www.figma.com/community/file/979571292056443766",
