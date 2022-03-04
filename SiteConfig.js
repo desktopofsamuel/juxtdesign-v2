@@ -15,7 +15,7 @@ const config = {
   disqusShortname: '', // Disqus shortname.
   dateFromFormat: 'YYYY-MM-DD', // Date format used in the frontmatter.
   dateFormat: 'DD/MM/YYYY', // Date format for display.
-  postsPerPage: 6, // Amount of posts displayed per listing page.
+  postsPerPage: 20, // Amount of posts displayed per listing page.
   userName: 'JUXT Design', // Username to display in the author segment.
   userEmail: 'juxtdesignco@gmail.com', // Email used for RSS feed's author segment
   userTwitter: '@juxtdesigncc', // Optionally renders "Follow Me" in the UserInfo segment.
