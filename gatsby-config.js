@@ -136,59 +136,136 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-sitemap`,
+      resolve: 'gatsby-plugin-complex-sitemap-tree',
       options: {
-        // output: `/sitemap.xml`,
-        // Exclude specific pages or groups of pages using glob parameters
-        // See: https://github.com/isaacs/minimatch
-        // The example below will exclude the single `path/to/page` and all routes beginning with `category`
         query: `
-          {
-            site {
-              siteMetadata {
-                siteUrl
-              }
+        {
+          allPrismicPost {
+          edges {
+            node {
+              url
+              last_publication_date
             }
-            allSitePage {
-              nodes {
-                path
+          }
+        }
+        allPrismicCategory {
+          edges {
+            node {
+              last_publication_date
+              url
+            }
+          }
+        }
+        allMdx {
+          edges {
+            node {
+              fields {
+                slug
+                date
               }
             }
           }
-        `,
-        // resolveSiteUrl: ({
-        //   site: {
-        //     siteMetadata: { url },
-        //   },
-        // }) => url,
-        // resolvePages: ({ allSitePage: { nodes: postnodes } }) => {
-        //   console.log(postnodes);
-        //   const posts = postnodes.map((post) => ({
-        //     path: post.path,
-        //     changefreq: 'weekly',
-        //     priority: 0.7,
-        //   }));
-        //   return [...posts];
-        // },
-        // serialize: ({ path, lastmod, changefreq, priority }) => ({
-        //   url: path,
-        //   lastmod,
-        //   changefreq,
-        //   priority,
-        // }),
-        // filterPages: ({ }) => {
-
-        // },
-        // excludes: [
-        //   `/dev-404-page`,
-        //   `/404`,
-        //   `/404.html`,
-        //   `/offline-plugin-app-shell-fallback`,
-        //   `/my-excluded-page`,
-        //   /(\/)?hash-\S*/, // you can also pass valid RegExp to exclude internal tags for example
-        // ],
+        }
+        allSitePage(filter: {path: {regex: "/^((?!tags)(?!resources)(?!guides).)*$/"}}) {
+          edges {
+            node {
+              path
+            }
+          }
+        }
+      }`,
+        sitemapTree: {
+          fileName: 'sitemap.xml',
+          children: [
+            {
+              fileName: 'sitemap-categories.xml',
+              queryName: 'allPrismicCategory',
+              serializer: (edge) => ({
+                loc: edge.url,
+                lastmod: edge.last_publication_date,
+              }),
+            },
+            {
+              fileName: 'sitemap-resources.xml',
+              queryName: 'allPrismicPost',
+              serializer: (edge) => ({
+                loc: edge.url,
+                lastmod: edge.last_publication_date,
+              }),
+            },
+            {
+              fileName: 'sitemap-guides.xml',
+              queryName: 'allMdx',
+              serializer: (edge) => ({
+                loc: edge.fields.slug,
+                lastmod: edge.fields.date,
+              }),
+            },
+            {
+              fileName: 'sitemap-page.xml',
+              queryName: 'allSitePage',
+              serializer: (edge) => ({
+                loc: edge.path,
+              }),
+            },
+          ],
+        },
       },
     },
+    // {
+    //   resolve: `gatsby-plugin-sitemap`,
+    //   options: {
+    // output: `/sitemap.xml`,
+    // Exclude specific pages or groups of pages using glob parameters
+    // See: https://github.com/isaacs/minimatch
+    // The example below will exclude the single `path/to/page` and all routes beginning with `category`
+    // query: `
+    //   {
+    //     site {
+    //       siteMetadata {
+    //         siteUrl
+    //       }
+    //     }
+    //     allSitePage {
+    //       nodes {
+    //         path
+    //       }
+    //     }
+    //   }
+    // `,
+    // resolveSiteUrl: ({
+    //   site: {
+    //     siteMetadata: { url },
+    //   },
+    // }) => url,
+    // resolvePages: ({ allSitePage: { nodes: postnodes } }) => {
+    //   console.log(postnodes);
+    //   const posts = postnodes.map((post) => ({
+    //     path: post.path,
+    //     changefreq: 'weekly',
+    //     priority: 0.7,
+    //   }));
+    //   return [...posts];
+    // },
+    // serialize: ({ path, lastmod, changefreq, priority }) => ({
+    //   url: path,
+    //   lastmod,
+    //   changefreq,
+    //   priority,
+    // }),
+    // filterPages: ({ }) => {
+
+    // },
+    // excludes: [
+    //   `/dev-404-page`,
+    //   `/404`,
+    //   `/404.html`,
+    //   `/offline-plugin-app-shell-fallback`,
+    //   `/my-excluded-page`,
+    //   /(\/)?hash-\S*/, // you can also pass valid RegExp to exclude internal tags for example
+    // ],
+    //   },
+    // },
     // {
     //   resolve: `gatsby-plugin-advanced-sitemap`,
     //   options: {
