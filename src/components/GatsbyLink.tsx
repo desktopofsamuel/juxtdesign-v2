@@ -1,13 +1,10 @@
 import { Link as GatsbyLink } from 'gatsby';
 import React from 'react';
-import { Link as ChakraLink, chakra } from '@chakra-ui/react';
-// import { OutboundLink } from "gatsby-plugin-google-gtag";
+import { OutboundLink } from 'gatsby-plugin-google-tagmanager';
 
 const ActiveLink = {
   fontWeight: 600,
 };
-
-const CustomLink = chakra(GatsbyLink);
 
 const defaultProps: LinkProps = {
   target: `_self`,
@@ -38,7 +35,6 @@ const Link = ({
   activeClassName,
   partiallyActive,
   target,
-  variant,
   ...other
 }: LinkProps) => {
   // Tailor the following test to your environment.
@@ -49,7 +45,7 @@ const Link = ({
   // Use Gatsby Link for internal links, and <a> for others
   if (internal) {
     return (
-      <CustomLink
+      <GatsbyLink
         to={to}
         className={className}
         activeClassName={activeClassName}
@@ -59,21 +55,20 @@ const Link = ({
         {...other}
       >
         {children}
-      </CustomLink>
+      </GatsbyLink>
     );
   }
   return (
-    <ChakraLink
-      isExternal
+    <a
+      // isExternal
       href={to}
       className={className}
       target={target}
       rel="noreferrer noopener"
-      variant={variant}
       {...other}
     >
       {children}
-    </ChakraLink>
+    </a>
   );
 };
 

@@ -2,31 +2,23 @@ import { styled } from 'gatsby-theme-stitches/src/stitches.config';
 
 export const PageTitle = styled('h1', {
   margin: '0',
-  fontSize: '$7',
+  fontSize: '$xl',
   fontFamily: '$sans',
   fontWeight: '$bold',
   color: '$onBackground',
-
-  '@md': {
-    fontSize: '$6',
-  },
 });
 export const ResourceTitle = styled('h2', {
   margin: '0',
-  fontSize: '$5',
+  fontSize: '$md',
   fontFamily: '$sans',
   fontWeight: '$bold',
   textTransform: 'none',
   color: '$onBackground',
-
-  '@md': {
-    fontSize: '$4',
-  },
 });
 
 export const Subtitle = styled('h3', {
   margin: '0',
-  fontSize: '$3',
+  fontSize: '$md',
   fontFamily: '$sans',
   fontWeight: '$bold',
   textTransform: 'none',
@@ -35,7 +27,7 @@ export const Subtitle = styled('h3', {
 
 export const Body = styled('p', {
   margin: '0',
-  fontSize: '$3',
+  fontSize: '$base',
   fontFamily: '$sans',
   fontWeight: '$regular',
   color: '$body',
@@ -43,14 +35,14 @@ export const Body = styled('p', {
 
 export const Subheading = styled('p', {
   fontWeight: '$bold',
-  fontSize: '$2',
+  fontSize: '$sm',
   textTransform: 'uppercase',
   letterSpacing: '$sparse',
 });
 
 export const Meta = styled('p', {
   margin: '0',
-  fontSize: '$3',
+  fontSize: '$xs',
   fontFamily: '$sans',
   fontWeight: '$regular',
   color: '$primary',
@@ -59,7 +51,6 @@ export const Meta = styled('p', {
     type: {
       label: {
         fontWeight: '$regular',
-        fontSize: '$1',
         textTransform: 'uppercase',
         color: '$bodyLighter',
       },

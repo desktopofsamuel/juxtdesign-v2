@@ -61,7 +61,11 @@ export default function ResourceIndexTemplate({ data, pageContext }) {
 
 export const query = graphql`
   query ResourceIndexQuery($postsLimit: Int!, $postsOffset: Int!) {
-    allPrismicPost(limit: $postsLimit, skip: $postsOffset) {
+    allPrismicPost(
+      sort: { order: DESC, fields: data___date }
+      limit: $postsLimit
+      skip: $postsOffset
+    ) {
       edges {
         node {
           ...post

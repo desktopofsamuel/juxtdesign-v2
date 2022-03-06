@@ -7,7 +7,7 @@ import Layout from '@/components/Layout';
 import ListPost from '@/components/ListPost';
 import ListMdxBlog from '@/components/ListMdxBlog';
 import SEO from '@/components/SEO';
-import { PageTitle, Body } from '../styles/TextStyles';
+import { PageTitle, Body, Subheading } from '../styles/TextStyles';
 
 const Wrapper = styled('div', {
   margin: '$7 0',
@@ -48,14 +48,14 @@ export default function CategoryTemplate({ data, pageContext }) {
       {/* {item.feature && <p>{item.feature.src}</p>} */}
       {blogs && (
         <>
-          <h3>Guides</h3>
+          <Subheading>Guides</Subheading>
           <PostListWrapper>
             <ListMdxBlog data={blogs} withImage withDate withDescription />
           </PostListWrapper>
         </>
       )}
 
-      <h3>Resources</h3>
+      <Subheading>Resources</Subheading>
       <ListPost
         data={posts}
         css={{

@@ -41,7 +41,7 @@ const globalStyles = globalCss({
   html: {
     fontFamily: `$sans`,
     fontWeight: `$regular`,
-    fontSize: `$3`,
+    fontSize: `$base`,
     lineHeight: `$regular`,
     margin: `0`,
     padding: `0`,
