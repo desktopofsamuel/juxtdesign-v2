@@ -144,14 +144,14 @@ module.exports = {
           edges {
             node {
               url
-              last_publication_date
+              last_publication_date(formatString: "YYYY-MM-DDTHH:MM:SS.SSS[Z]")
             }
           }
         }
         allPrismicCategory {
           edges {
             node {
-              last_publication_date
+              last_publication_date(formatString: "YYYY-MM-DDTHH:MM:SS.SSS[Z]")
               url
             }
           }
@@ -166,7 +166,7 @@ module.exports = {
             }
           }
         }
-        allSitePage(filter: {path: {regex: "/^((?!tags)(?!resources)(?!guides).)*$/"}}) {
+        allSitePage(filter: {path: {regex: "/^((?!tags)(?!resources)(?!guides)(?!404).)*$/"}}) {
           edges {
             node {
               path
@@ -183,6 +183,8 @@ module.exports = {
               serializer: (edge) => ({
                 loc: edge.url,
                 lastmod: edge.last_publication_date,
+                changefreq: 'daily',
+                priority: '0.7',
               }),
             },
             {
@@ -191,6 +193,8 @@ module.exports = {
               serializer: (edge) => ({
                 loc: edge.url,
                 lastmod: edge.last_publication_date,
+                changefreq: 'daily',
+                priority: '0.7',
               }),
             },
             {
@@ -199,6 +203,8 @@ module.exports = {
               serializer: (edge) => ({
                 loc: edge.fields.slug,
                 lastmod: edge.fields.date,
+                changefreq: 'daily',
+                priority: '0.7',
               }),
             },
             {
@@ -206,6 +212,9 @@ module.exports = {
               queryName: 'allSitePage',
               serializer: (edge) => ({
                 loc: edge.path,
+                lastmod: new Date().toISOString(),
+                changefreq: 'daily',
+                priority: '0.7',
               }),
             },
           ],
