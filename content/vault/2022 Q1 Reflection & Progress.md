@@ -6,14 +6,22 @@ tags:
 category: 'reflection'
 publish: false
 date: 2022-01-01
-socialImage: 'media/design-okr-update-2021q3.png'
+socialImage: 'media/20220308-OKR.png'
 ---
+![](media/20220308-OKR.png)
+
+
+
+## Key Achievements
+It's a new year and quite a lot has been achieved this quarter. First of all, I have wrote my personal blog from scratch using NextJS as part of my practice. The hardest part was the API and synchronising with rss feed & Spotify. I also  Redeployed [juxtdesign.cc](https://juxtdesign.cc)
+
 
 ## Record
 
 ### [[Be knowledgable]]
 
 ### [[Design System Research]]
+-
 
 ### [[Logging Design Decisions & Portfolio]]
 
@@ -21,5 +29,4 @@ socialImage: 'media/design-okr-update-2021q3.png'
 
 - #### [[Write 4 Blogs about coding and design]]
 - #### [[Join 3 tech meetups and conferences]]
-  - Attended Frustrated Design Pattern workshop by SmashConf
-  - Attended Figma's design system conference - Schema2021
+

@@ -12,6 +12,7 @@ socialImage: 'media/design-okr-update-2021q3.png'
 
 ## Record
 
+
 ### [[Be knowledgable]]
 
 ### [[Design System Research]]

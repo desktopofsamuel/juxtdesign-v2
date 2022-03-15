@@ -85,7 +85,7 @@ export default function Footer() {
                     id="member_email"
                   />
                 </div>
-                <div style={{ display: 'flex', gap: '8px' }}>
+                <div style={{ display: 'block', gap: '8px' }}>
                   <div class="revue-form-group">
                     <label for="member_first_name">First name</label>
                     <input

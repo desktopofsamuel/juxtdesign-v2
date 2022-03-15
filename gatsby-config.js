@@ -192,7 +192,6 @@ module.exports = {
               queryName: 'allPrismicPost',
               serializer: (edge) => ({
                 loc: edge.url,
-                lastmod: edge.last_publication_date,
                 changefreq: 'daily',
                 priority: '0.7',
               }),
@@ -202,7 +201,6 @@ module.exports = {
               queryName: 'allMdx',
               serializer: (edge) => ({
                 loc: edge.fields.slug,
-                lastmod: edge.fields.date,
                 changefreq: 'daily',
                 priority: '0.7',
               }),
@@ -212,7 +210,7 @@ module.exports = {
               queryName: 'allSitePage',
               serializer: (edge) => ({
                 loc: edge.path,
-                lastmod: new Date().toISOString(),
+                // lastmod: new Date().toISOString(),
                 changefreq: 'daily',
                 priority: '0.7',
               }),
