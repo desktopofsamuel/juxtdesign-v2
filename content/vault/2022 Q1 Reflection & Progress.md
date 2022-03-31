@@ -5,22 +5,22 @@ tags:
   - Careers
 category: 'reflection'
 publish: false
-date: 2022-01-01
+date: 2022-03-31
 socialImage: 'media/20220308-OKR.png'
 ---
+
 ![](media/20220308-OKR.png)
 
-
-
 ## Key Achievements
-It's a new year and quite a lot has been achieved this quarter. First of all, I have wrote my personal blog from scratch using NextJS as part of my practice. The hardest part was the API and synchronising with rss feed & Spotify. I also  Redeployed [juxtdesign.cc](https://juxtdesign.cc)
 
+It's a new year and quite a lot has been achieved this quarter. First of all, I have wrote my personal blog from scratch using NextJS as part of my practice. The hardest part was the API and synchronising with rss feed & Spotify. I also Redeployed [juxtdesign.cc](https://juxtdesign.cc)
 
 ## Record
 
 ### [[Be knowledgable]]
 
 ### [[Design System Research]]
+
 -
 
 ### [[Logging Design Decisions & Portfolio]]
@@ -29,4 +29,3 @@ It's a new year and quite a lot has been achieved this quarter. First of all, I 
 
 - #### [[Write 4 Blogs about coding and design]]
 - #### [[Join 3 tech meetups and conferences]]
-
