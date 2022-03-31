@@ -52,7 +52,7 @@ const onCreateNode = ({ node, actions, getNode }) => {
     ) {
       postSlug = kebabCase(node.frontmatter.title);
     } else {
-      postSlug = fileNode.name;
+      postSlug = kebabCase(fileNode.name);
     }
     console.log(source);
     if (source === 'posts') {
