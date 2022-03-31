@@ -9,6 +9,17 @@ import projects from '../../content/project.json';
 import SEO from '@/components/SEO';
 import Container from '@/components/Container';
 
+const Row = styled('div', {
+  display: 'grid',
+  gridTemplate: 'auto/repeat(12, 1fr)',
+  gridGap: '$3',
+  padding: '$3 0',
+
+  '@md': {
+    display: 'block',
+  },
+});
+
 const Header = styled('section', {
   padding: '$4',
   marginBottom: '$5',
@@ -52,33 +63,21 @@ const FullWidthSection = styled(Section, {
 
 const BoldPageTitle = styled(PageTitle, {
   fontFamily: '$syne',
-  fontSize: '$8',
+  fontSize: '$3xl',
   textTransform: 'uppercase',
   lineHeight: '$tight',
-
-  '@md': {
-    fontSize: '$6',
-  },
 });
 
 const SectionPageTitle = styled(ResourceTitle, {
   fontFamily: '$syne',
-  fontSize: '$6',
+  fontSize: '$lg',
   lineHeight: '$tight',
-
-  '@md': {
-    fontSize: '$4',
-  },
 });
 const SectionPageTitleOnDark = styled(ResourceTitle, {
   fontFamily: '$syne',
-  fontSize: '$6',
+  fontSize: '$lg',
   lineHeight: '$tight',
   color: '$onPrimary',
-
-  '@md': {
-    fontSize: '$4',
-  },
 });
 const AboutContainer = styled(Container, {});
 
@@ -125,21 +124,14 @@ export default function AboutPage() {
     <Layout variant="medium">
       <SEO postPath="/about/" pageTitle="About" />
       {/* <StaticImage src="../../static/cover.png" /> */}
-      <Header>
-        <BoldPageTitle css={{ textAlign: 'center' }}>JUXT Design</BoldPageTitle>
-        <LargeBody>
-          Join us on this journey to advocate design & user experience
-        </LargeBody>
-      </Header>
       <Section>
-        <Half>
+        <div style={{ gridColumn: 'span 12' }}>
           <SectionPageTitle>A little about me</SectionPageTitle>
           <Body>
             Hello! My name is Samuel and I started JUXT Design to share design
             resources and advocate user-centered design.
           </Body>
-        </Half>
-        <Half>{}</Half>
+        </div>
       </Section>
       <FullWidthSection>
         <Container

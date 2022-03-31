@@ -10,7 +10,7 @@ import ListCategory from '@/components/ListCategory';
 import SEO from '@/components/SEO';
 import GatsbyLink from 'gatsby-link';
 import Button from '@/components/Button';
-import { Meta, ResourceTitle, Subtitle } from '@/styles/TextStyles';
+import { Meta, PageTitle, ResourceTitle, Subtitle } from '@/styles/TextStyles';
 
 const Box = styled('div', {});
 
@@ -47,6 +47,33 @@ export default function Index({ data }) {
         <Row
           css={{
             gridColumn: 'span 12',
+            //     display: 'block',
+            //     border: '1px solid $border',
+            //     borderRadius: '$3',
+            //     padding: '$6',
+            //     margin: '10vh 0',
+
+            //     '@md': {
+            //       padding: '$3',
+            //       margin: '5vh 0',
+            //     },
+            //   }}
+            // >
+            //   <Subtitle>
+            //     Join me on this journey to advocate design & user experience
+            //   </Subtitle>
+            //   <p>
+            //     Hello! My name is Samuel and I started JUXT Design to share design
+            //     resources and advocate user-centered design.
+            //   </p>
+            //   <Button to="https://www.getrevue.co/profile/juxtdesigncc/">
+            //     Subscribe Newsletter
+            //   </Button>
+            // </Row>
+            // <Subtitle>Guides</Subtitle>
+            // <Row
+            //   css={{
+            //     gridColumn: 'span 12',
             display: 'grid',
             gridTemplateColumns: '1fr 1fr 1fr',
 
