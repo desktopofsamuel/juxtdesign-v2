@@ -71,6 +71,7 @@ module.exports = {
           //     stripBrackets: true,
           //   },
           // },
+          `gatsby-remark-prismjs`,
           {
             resolve: `gatsby-remark-relative-images`,
             options: {
@@ -122,6 +123,13 @@ module.exports = {
     'gatsby-plugin-image',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
+    'gatsby-remark-prismjs',
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [`gatsby-remark-prismjs`],
+      },
+    },
     'gatsby-theme-stitches',
     {
       resolve: `gatsby-plugin-manifest`,
